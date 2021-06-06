@@ -1,44 +1,150 @@
+:root {
+  --blue: rgb(33, 36, 4);
+  --white:rgb(255, 255, 255);
+  // --white:rgb(230, 230, 230);
+  --space:0.8px;
+  --black: rgb(31, 31, 31);
+  --gray:rgb(209, 209, 209);
+  --darkgray:rgb(22, 22, 22);
+  --gold:rgb(167, 96, 9);
+  --darkgold:rgb(59, 20, 27);
+  --green:rgb(2, 24, 2);
+  --yellow:rgba(255,219,56,255);
+
+}
+
+
 html {
-    font-size:10px;
+  font-size: 10px;
 }
+
+html,
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    line-height: 1;
+  padding: 0;
+  margin: 0;
+
 }
 
-html,body{
-    
-    padding: 0;
-    margin: 0;
+html,
+body,
+#root,
+.App,
+.fullHeight {
+  height: 100%;
+   
 }
 
-html,body,.App,#root,.fullHeight {
-    height:100%;
-    
+*, ::before, ::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-*, ::after, ::before{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing:border-box;
-    box-sizing: border-box;
+body {
+  // font-family: 'Ropa Sans', sans-serif;
+  // font-family: 'Jost', sans-serif;
+  // font-family: 'Barlow Semi Condensed', sans-serif;
+  // font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  // font-family: 'Nunito Sans', sans-serif;
+  // font-family: 'Josefin Slab', serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1;
+  
+}
+
+h1 {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 3.0rem;
+  line-height: 3.2rem;
+  color: #000000;
+  text-align: left;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-bottom: #d3d3d3;
+}
+
+h2 {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto 2rem;
+  font-size: 2.5rem;
+  line-height: 2.7rem;
+  color: #000000;
+  text-align: left;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-bottom: #d3d3d3;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-a,a:hover {
-    -webkit-transition: all .4s ease-in-out;
-    -moz-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+a, a:hover {
+  -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  
 }
 
 .main {
-    width: 100%;
-    max-width: 1450px;
-    height: calc(100% - 6.5rem);
-    padding: 0 ;
-    margin: 0 auto;
+  width: 100%;
+  height: calc(100% - 6.5rem);
+  max-width: 1450px;
+  padding: 0 0px;
+  margin: 0 ;
+}
+
+.controlPanel {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-height: 100%;
+  padding: 3rem 0 6rem 25.0rem;
+  border-bottom: 1px solid #d3d3d3;
+
+  .sidebar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 25.0rem;
+    height: 100%;
+    z-index: 1;
+    border-right: 1px solid #d3d3d3;
+  }
+
+  .content {
+    padding: 0 10px;
+  }
+}
+
+.adminLayout {
+  height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
+}
+
+.dashboardLayout {
+  height: calc(100% - 6.5rem - 5.8rem);
+}
+
+@media only screen and (max-width: 980px) {
+  html {
+    font-size: 9px;
+  }
+
+  .controlPanel {
+    padding: 0 10px;
+
+    .sidebar {
+      position: relative;
+      width: 100%;
+      border: none;
+      margin-bottom: 2.5rem;
+    }
+  }
 }

@@ -1,0 +1,61 @@
+.loadmore {
+    display: flex;
+    flex-direction: column;
+    // margin: 0.5rem 0 0 0;
+    border: 2rem;
+    display: flex;
+    width: 100%;
+    
+    border-radius: 25px;
+    align-items: center;
+    font-size: 1.3rem;
+    justify-content: center;
+   padding:4rem;
+    list-style: none;
+    outline: none;
+    color: rgb(31, 31, 31);
+    text-transform:capitalize;
+    cursor: pointer;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    p{
+        border: 0.5px solid rgb(192, 192, 192);
+        padding: 1rem;
+    }
+
+    .drop {
+
+        .MuiSvgIcon-root {
+            position: relative;
+          margin: 0;
+          padding:2px;
+          font-size: 2rem;
+        //   color: var(--blue);
+          color: black;
+          
+          top: -20px;
+          transition: 0.5s ease-out;
+          
+          opacity: 0;
+        }
+
+        // &:hover .loadmore{
+        //     opacity: 1;
+        //     visibility: visible;
+        // }
+        
+        &:hover .MuiSvgIcon-root{
+          opacity: 1;
+          orientation: rotate(90);
+          visibility: visible;
+          top: 2px;
+          font-size: 3rem;
+      }
+        
+      }
+}
+
+// .loadmore:hover {
+//     // background-color:rgb(238, 238, 238);
+// }

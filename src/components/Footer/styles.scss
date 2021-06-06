@@ -1,19 +1,95 @@
 .footer {
-    display: flex;
-    justify-content: center;
-    width: 92.1%;
-    max-width: 1450px;
-    height: 10rem;
-    background-color:lightblue;
-    padding: 0 5rem;
-    margin: 0 5rem;
 
-    .wrap {
-        display: flex;
+    // border-top: 0.5px solid rgb(177, 177, 177);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1450px;
+    margin-top: 6rem;
+    background: var(--black);
+    // background-color:var(--blue);
+    // background: var(--white);
+    // padding-top: 8rem
+  
+   
+
+    .info {
+
+        display: inline-grid;
+        grid-template-columns: 23% 23% 23% 23% ;
         justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        color: white;
-        text-transform: uppercase;
+        grid: center;
+        grid-gap: 0;
+        border-bottom: rgb(56, 56, 56) 1px solid;
+        // border-top: var(--white) 1px solid;
+        width: 100%;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        h4{
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            width: 100%;
+            letter-spacing: 2px;
+            color: var(--white);
+            // color: var(-blue);
+        }
+
+        .followus{
+            
+            .MuiSvgIcon-root {
+                font-size: 2rem;
+                color: var(--white);
+                // color: var(--blue);
+                margin: 1rem;
+              }
+
+            
+        }
+        
+    
+    
+        p {
+            font-size: 1.3rem;
+            color: var(--white);
+            // color: var(--blue);
+            padding: 0.5rem;
+            width:100%;
+            cursor: pointer;
+        }
+        p::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: width .3s;
+        }
+        
+        p:hover::after {
+            width: 25%;
+            //transition: width .3s;
+        }
     }
+
+    .policy{
+        // background: var(--blue);
+        background: var(--black);
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 1rem;
+        width: 100%;
+        color: var(--white);
+        border-bottom: rgb(59, 59, 59) 1px solid;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .footer{
+        display: none;
+    }
+
 }

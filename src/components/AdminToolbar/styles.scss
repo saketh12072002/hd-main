@@ -1,10 +1,12 @@
 .adminToolbar {
     display: inline-block;
+    // position: absolute; 
     width: 100%;
     background-color: black;
     height: auto;
-    margin: 0 auto;
-    padding: 0 10px;
+    // margin: 0 auto;
+    top: 3rem;
+    padding: 0 30px;
   
     ul, li {
       list-style-type: none;

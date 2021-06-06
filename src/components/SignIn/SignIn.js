@@ -7,6 +7,7 @@ import Button from './../forms/Button/Button'
 import {useDispatch,useSelector} from 'react-redux'
 import {emailSignInStart,googleSignInStart} from '../../redux/User/user.action'
 // import userTypes from '../../redux/User/user.types'
+import {Link} from 'react-router-dom'
 
 const mapState = ({user}) => ({
     currentUser: user.currentUser
@@ -40,36 +41,56 @@ function SignIn(props ) {
         <div className="signin">
             <div className="wrap">
                 <h2>
-                    Login
+                    {/* Welcome */}
                 </h2>
           
 
                 <div className="formWrap">
                 
-                    <form onSubmit={handleSubmit}>
+                    <form className="singinform" onSubmit={handleSubmit}>
 
-                        <FormInput type="email" name="email" 
-                        value={email} placeholder="email" 
+                        <input className="signinforminput" type="email" name="email" 
+                        value={email} placeholder="EMAIL" 
                             onChange={e=>setEmail(e.target.value)}
                         />
 
-                        <FormInput type="password" name="password" 
-                        value={password} placeholder="password" 
+                        <input className="signinforminput" type="password" name="password" 
+                        value={password} placeholder="PASSWORD" 
                             onChange={e=>setPassword(e.target.value)}
                         />
 
-                        <Button type="submit">
+                        <Button className="button" type="submit">
                             Login
                         </Button>
 
                         <div className="socialSignin">
                         <div className="row">
-                        <Buttons onClick={handleGoogleSignIn}>
+                        <Button className="button1" onClick={handleGoogleSignIn}>
                                 Sign in with google
-                            </Buttons>
+                            </Button>
                         </div>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div className="signupimg">
+                
+               <div className="signupname">
+
+               <div className="matter">
+                    <h2>New here ?</h2>
+                    <p>
+                        Signup and discover
+                    </p>
+                </div>
+               <Link to="/registration">
+                     <div className="signup">
+                         SIGNUP
+                     </div>
+                    </Link>
+               </div>
+                <div className="signupimage">
+                    <img src="https://static3.azafashions.com/tr:w-270,dpr-2,e-sharpen/uploads/banner_templates/bangles-bracelets-0614480001615283737.jpg" />
                 </div>
             </div>
         </div>

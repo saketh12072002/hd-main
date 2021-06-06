@@ -1,16 +1,29 @@
 
 .btn {
     display: block;
-    width: 100%;
-    font-size: 1.8rem;
+    width: 10%;
+    font-size: 1.4rem;
     line-height: 1;
     font-weight: 300;
     text-transform: uppercase;
-    color: white;
-    background: black;
-    padding: 1rem 10px;
+    font-family: 'Ropa Sans', sans-serif;
+    // color: white;
+    // background: rgb(0, 1, 83);
+    // padding: 2rem 10px;
     margin: 0 auto;
-    border: 0;
+    // border: 0;
     outline: none;
     cursor: pointer;
+    background-color:var(--white);
+        color: var(--blue);
+        border: 1px solid var(--blue);
+        width: 26rem;
+        letter-spacing: 2px;
+        padding: 1.6rem;
+        transition: 0.3s ease-out;
+
+    &:hover{
+      font-weight: 800 ;
+      
+    }
   }

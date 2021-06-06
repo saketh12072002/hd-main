@@ -1,5 +1,5 @@
 import userTypes from './user.types'
-import {auth,handleUserProfile,GoogleProvider} from '../../firebase/utils'
+import {auth,GoogleProvider,facebookProvider} from '../../firebase/utils'
 
 
 export const emailSignInStart = userCredentials => ({
@@ -55,12 +55,9 @@ export const googleSignInStart = () => ({
     type:userTypes.GOOGLE_SIGN_IN_START
 })
 
-
-
-
-
-
-
+export const facebookSignInStart = () => ({
+    type:userTypes.FACEBOOK_SIGN_IN_START
+})
 
 export const setCurrentUser = user => ({
     type:userTypes.SET_CURRENT_USER,
@@ -70,10 +67,6 @@ export const setCurrentUser = user => ({
 export const resetAllAuthForms = () => ({
     type:userTypes.RESET_AUTH_FORMS 
 })
-
-// export const signInUser =({email,password}) =>async dispatch=>{
-    
-// };
 
 export const signUpUser =({displayName, email, password, confirmPassword}) => async dispatch =>  {
    
@@ -93,5 +86,24 @@ export const signInWithGoogle = () => async disptach => {
     } catch (err) {
         // console.log(err)
     }
+
+    
+    
+};
+
+export const signInWithFacebook = () => async disptach => {
+    try {
+        await auth.signInWithPopup(facebookProvider)
+        .then(()=>{
+           disptach({
+            type:userTypes.SIGN_IN_SUCCESS,
+            payload:true
+           })
+        })
+    } catch (err) {
+        // console.log(err)
+    }
+
+    
     
 };

@@ -3,7 +3,7 @@ import './styles.scss'
 function index() {
     return (
         <div>
-            you are looged in
+            you are logged in
         </div>
     )
 }

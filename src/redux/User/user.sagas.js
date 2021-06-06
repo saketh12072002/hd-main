@@ -1,7 +1,7 @@
 import {takeLatest, call, all, put} from 'redux-saga/effects';
 import userTypes from './user.types'
 import { signOutUserSuccess,signInSuccess,userError,resetPasswordSuccess} from './user.action'
-import {auth,handleUserProfile,getCurrentUser,GoogleProvider} from '../../firebase/utils'
+import {auth,handleUserProfile,getCurrentUser,GoogleProvider,facebookProvider} from '../../firebase/utils'
 import {handleResetPasswordAPI} from './user.helper'
 
 
@@ -33,7 +33,7 @@ export function* emailSignIn({payload:{email,password}}){
 export function* onEmailSignInStart () {
     yield takeLatest(userTypes.EMAIL_SIGN_IN_START,emailSignIn);
 }
-
+ 
 export function* isUserAuthenticated(){
     try {
         const userAuth = yield getCurrentUser();
@@ -128,6 +128,20 @@ export function* resetPassword({ payload: { email }}) {
     yield takeLatest(userTypes.GOOGLE_SIGN_IN_START, googleSignIn);
   }
 
+  export function* facebookSignIn() {
+    try {
+      const { user } = yield auth.signInWithPopup(facebookProvider);
+      yield getSnapshotFromUserAuth(user);
+  
+    } catch (err) {
+      // console.log(err);
+    }
+  }
+
+  export function* onFacebookSignInStart() {
+    yield takeLatest(userTypes.FACEBOOK_SIGN_IN_START, facebookSignIn);
+  }
+
 
   export default function* userSagas() {
     yield all([
@@ -137,6 +151,7 @@ export function* resetPassword({ payload: { email }}) {
       call(onResetPasswordStart),
       call(onCheckUserSesssion),
       call(onGoogleSignInStart),
+      call(onFacebookSignInStart)
     ])
   }
 

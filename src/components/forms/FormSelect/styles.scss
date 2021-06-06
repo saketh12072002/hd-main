@@ -1,0 +1,52 @@
+.formRow {
+    display: inline-block;
+    width: 85%;
+
+  
+    
+  
+    label {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  
+    select {
+      font-family: 'Ropa Sans';
+      display: block;
+      width: 100%;
+      float: left;
+      font-size: 1.4rem;
+      // line-height: 1;
+      font-weight: 400;
+      text-align: left;
+      padding: 5px 0px;
+      // margin: 10px auto;
+      border: none;
+      top: 0;
+      left: 0;
+      transform: translate(0%, 0%);
+      position: inherit;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 3rem;
+      outline: none;
+      cursor: pointer;
+      background: var(--white);
+      
+      
+
+      option {
+        letter-spacing: 2rem;
+        font-size: 1rem;
+        padding-bottom: 2rem;
+        font-weight:100;
+        letter-spacing: 2rem;
+
+      }
+      
+    }
+
+    
+   
+  }
