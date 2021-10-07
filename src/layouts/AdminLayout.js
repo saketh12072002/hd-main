@@ -30,8 +30,8 @@ function AdminLayout(props) {
                                 </Link>
                             </li>
                             <li> 
-                                <Link to="/images">
-                                    Images
+                                <Link to="/admin/blogs">
+                                    Blogs
                                 </Link>
                             </li>
                             <li>
@@ -47,7 +47,7 @@ function AdminLayout(props) {
                         {props.children}
                     </div>
             </div>       
-        <Footer />     
+        {/* <Footer />      */}
         </div>
     )
 }

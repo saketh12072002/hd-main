@@ -1,0 +1,183 @@
+.product {
+    // width: 40%;
+    border:0px solid rgb(241, 241, 241);
+    width: 100%;
+    height: 100%;
+    // padding-top: 2rem;
+    padding-left:1rem;
+    padding-right: 1rem;
+    margin-bottom: 3rem;
+    transition: 0.3s;
+    // font-family: 'Playfair Display', serif;
+  
+    
+    // &:hover {
+    //   // box-shadow: 1px 6px 18px 1px #d8d8d8; 
+    // }
+  
+    .thumb {
+      display: block;
+      width: 100%;
+  
+  
+      img {
+        display: block;
+        width: 100%;
+        margin: 0;
+        object-fit:fill;
+        border: 1px;
+      
+        
+        
+      }
+      img:hover {
+        transition: 0.1s;
+        // transform: scale(1.01); 
+        
+      }
+    }
+  
+    .detailss {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height:10rem;
+      padding-top: 0 0;
+      margin:0;
+
+        &:hover{
+          margin-bottom: 4rem;
+        }
+  
+      ul, ul li {
+        padding: 0;
+        margin: 0;
+      }
+  
+      ul {
+        .name {
+          display: flex;
+          // margin: 5px;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          padding-top: 1rem;
+          // padding-bottom: ;
+          text-align: center;
+          line-height: 1.2;
+          font-weight: 400;
+          text-transform:uppercase; 
+        }
+  
+        .line{
+          width: 8rem;
+          height: 1px;
+          background-color: var(--gold);
+          margin-top: 1rem;
+        }
+
+        .productname{
+          text-align: center;
+          width: 20rem;
+          font-size: 1.2rem;
+          margin-top: 0.5rem;
+          font-weight: 800;
+          letter-spacing: 0.5px;
+        }
+        .price {
+          font-family: 'Nunito Sans', sans-serif;
+          display: flex;
+          flex-direction: row;
+          // padding-left: 2rem;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          // font-size: 1.1rem;
+          line-height: 1;
+          font-weight: 400;
+          color: black;
+          // padding-bottom: 2rem;
+
+          .pricee{
+            font-size: 1.1rem;
+          }
+          .discount{
+            font-size: 1rem;
+            padding-left: 2rem;
+            text-decoration:line-through;
+            color: rgb(134, 0, 0);
+          }
+        }
+  
+        li {
+  
+          display: flex;
+          flex-direction: row;
+          justify-content:space-between;
+          align-items:center; 
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          list-style-type: none;  
+          text-align: left;
+          margin: 0;
+  
+          a {
+            color: black;
+          }
+        }
+      }
+  
+          .addToCart {
+            display: block;
+            font-size: 1rem;
+            line-height: 1;
+            font-weight: 300;
+            text-transform: uppercase;
+            font-family: 'Ropa Sans', sans-serif;
+            margin: 0 auto;
+            outline: none;
+            cursor: pointer;
+            background-color:var(--gold);
+            color: var(--white);
+            border: 1px solid var(--gold);
+            letter-spacing: 1px;
+            padding: 0.7rem;
+            transition: 0.2s ease-in-out;
+
+            &:hover{
+              font-weight: 600 ;
+              background-color: var(--lightgold);
+              color: var(--gold);
+              
+            }
+          }
+          // :hover{
+          //   opacity: 100%;
+            
+          // }
+          // :hover.MuiSvgIcon-root{
+          //   font-size: 2.05rem;
+            
+          // }
+    }
+  }
+
+  @media only screen and (max-width: 480px){
+      .product{
+        .detailss{
+          ul{
+            .price{
+              font-size: 1.1rem;
+
+              .discount{
+                padding-left: 1rem;
+              }
+            }
+          }
+          }
+        }
+      }
+  
+  

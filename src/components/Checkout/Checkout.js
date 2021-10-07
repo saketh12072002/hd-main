@@ -8,65 +8,62 @@ import Button from './../forms/Button/Button';
 import Item from './Item/Item';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Forminput from './../forms/FormInput/Forminput'
+import { apiInstance } from '../../Utils';
+import Footer from '../Footer/Footer';
+import Headerthree from '../headerthree/Headerthree';
 
 const mapState = createStructuredSelector({
   cartItems: selectCartItems,
   total: selectCartTotal,
-
 });
+
+
+
+// function loadScript(src) {
+//   return new Promise ((resolve) => {
+
+//     const script = document.createElement('script')
+//     script.src = src
+
+//     script.onload = () =>{
+//       resolve(true)
+//     }
+//     script.onerror = () =>{
+//       resolve(false)
+//     }
+//     document.body.appendChild(script)
+//   })
+  
+// }
+
+const __DEV__ = document.domain === 'localhost'
 
 const Checkout = ({ }) => {
   const history = useHistory();
   const { cartItems, total } = useSelector(mapState);
+
+  console.log('cartitems')
+  console.log(cartItems)
   const [coupon, setCoupon] =useState()
   const errMsg = 'You have no items in your cart.';
-  console.log('asdad')
-  console.log(cartItems)
+
   return (
     <div className="checkout">
-     
-     
-
+      <div>
+        <Headerthree />
+      </div>
       <div className="cart">
         {cartItems.length > 0 ? (
-          <table border="0" cellPadding="0" cellSpacing="0">
-            <tbody>
-              <tr>
-                <td>
-                  <table className="checkoutHeader" border="0" cellPadding="10" cellSpacing="0">
-                    <tbody>
-                      <tr>
-                        <th>
-                          Product
-                        </th>
-                        <th>
-                          Name
-                        </th>
-                        <th>
-                          Quantity
-                        </th>
-                        <th>
-                          Price
-                        </th>
-                        <th>
-                          Size
-                        </th>
-                        <th>
-                          Remove
-                        </th>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div className="checkoutshoppingbag">
-                    Shopping bag
-                  </div>
+          <div className="checkoutlayout">
+                  {/* <div className="checkoutshoppingbag">
+                    Order Details - {cartItems.length} Item(s)
+                  </div> */}
                  <div className="allignitems">
                   
                     <div className="itemdetails">
+                    <div className="checkoutshoppingbag">
+                        Order Details - {cartItems.length} Item(s)
+                      </div>
                         <table border="0" cellSpacing="0" cellPadding="0">
                             <tbody>
                               {cartItems.map((item, pos) => {
@@ -83,16 +80,10 @@ const Checkout = ({ }) => {
                     </div>
                     <div className="pricecouponDetails">
                     <div className="">
-                      <div className="coupontext">
-                              Have a Coupon code ?
-                      </div>
-                      <input className="couponinput"
-                                                    label="Name"
-                                                    type="text"
-                                                    value={coupon}
-                                                    handleChange={e => setCoupon(e.target.value)}
-                                                />
-                        
+                              
+                        <div>
+                         
+                        </div> 
                     </div>
                     <div className="priceDetails">
                                         <div className="priceproductdetials">
@@ -139,70 +130,28 @@ const Checkout = ({ }) => {
                                         </div>
                                     </div> 
 
+                                    {/* {() => history.push('/payment')} */}
                                     <div className="checkoutbuttons">
-                                    <Button className="checkoutbutton" onClick={() => history.push('/payment')}>
-                                    Checkout
-                                  </Button>
+                                    <Button className="checkoutbutton" onClick={()=>history.push('/payment')}>
+                                        Checkout
+                                    </Button>
                                     </div>
                                     
                         </div>
                     
                  </div>
-                </td>
-              </tr>
-              {/* <tr>
-                <td>
-                  <table border="0" cellSpacing="0" cellPadding="0">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <table border="0" cellPadding="10" cellSpacing="0">
-                            <tbody>
-                              <tr>
-                                <td className="total">
-                                <h3>
-                                  Total: Rs. {total}
-                                </h3>
+                 <div className="marginbottom">
 
-                                
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <table border="0" cellPadding="10" cellSpacing="0">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <Button onClick={() => history.goBack()}>
-                                    Continue Shopping
-                                  </Button>
-                                </td>
-                                <td>
-                                  <Button onClick={() => history.push('/payment')}>
-                                    Checkout
-                                  </Button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr> */}
-            </tbody>
-          </table>
+                   </div>
+                 {/* <Footer /> */}
+          </div>
         ) : (
             <p>
               {errMsg}
             </p>
           )}
       </div>
+       
     </div>
     
 
@@ -211,3 +160,4 @@ const Checkout = ({ }) => {
 };
 
 export default Checkout;
+  

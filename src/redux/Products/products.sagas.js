@@ -2,7 +2,7 @@ import {takeLatest, put, all, call} from "redux-saga/effects"
 // import { ProductsStart } from "./products.actions"
 
 import productsTypes from './products.types'
-import {handleAddProduct, handleFetchProducts, handleFetchProductsSize,handleDeleteProduct, handleFetchProduct, handleFetchProductsBrand,handleFetchProductsDresstype} from './products.helpers'
+import {handleAddProduct, handleFetchProducts, handleFetchQueryProducts,handleFetchProductsSize,handleDeleteProduct, handleFetchProduct, handleFetchProductsBrand,handleFetchProductsDresstype, handleFetchProductsColour} from './products.helpers'
 import {auth} from './../../firebase/utils'
 import {setProducts,fetchProductsStart,setProduct} from './products.actions'
 
@@ -10,6 +10,7 @@ import {setProducts,fetchProductsStart,setProduct} from './products.actions'
 export function* addProduct({ payload }) {
 
     try {
+     
       const timestamp = new Date();
       yield handleAddProduct({
         ...payload,
@@ -30,7 +31,25 @@ export function* addProduct({ payload }) {
   export function* onAddProductStart() {
     yield takeLatest(productsTypes.ADD_NEW_PRODUCT_START, addProduct);
   }
+
   
+  export function* fetchQueryProducts({ payload }) {
+    try {
+
+      const products = yield handleFetchQueryProducts(payload);
+      yield put(
+        setProducts(products)
+      );
+  
+    } catch (err) {
+      // console.log(err);
+    }
+  }
+  
+  export function* onFetchProductsQueryStart() {
+    yield takeLatest(productsTypes.FETCH_PRODUCTS_QUERY_START, fetchQueryProducts);
+  }
+
   export function* fetchProducts({ payload }) {
     try {
 
@@ -48,45 +67,9 @@ export function* addProduct({ payload }) {
     yield takeLatest(productsTypes.FETCH_PRODUCTS_START, fetchProducts);
   }
 
-
-  export function* fetchProductsSize({ payload }) {
-    try {
-      const products = yield handleFetchProductsSize(payload);
-      yield put(
-        setProducts(products)
-      );
-  
-    } catch (err) {
-      // console.log(err);
-    }
-  }
-  
-  export function* onFetchProductsStartSize() {
-    yield takeLatest(productsTypes.FETCH_PRODUCTS_START_SIZE, fetchProductsSize);
-  }
-
-
-  export function* fetchProductsDresstype({ payload }) {
-    try {
-      const products = yield handleFetchProductsDresstype(payload);
-      yield put(
-        setProducts(products)
-      );
-  
-    } catch (err) {
-      // console.log(err);
-    }
-  }
-  
-  export function* onFetchProductsStartDresstype() {
-    yield takeLatest(productsTypes.FETCH_PRODUCTS_START_DRESSTYPE, fetchProductsDresstype);
-  }
-
-
   export function* fetchProductsBrand({ payload }) {
     try {
 
-     
       const products = yield handleFetchProductsBrand(payload);
       yield put(
         setProducts(products)
@@ -100,7 +83,26 @@ export function* addProduct({ payload }) {
   export function* onFetchProductsStartBrand() {
     yield takeLatest(productsTypes.FETCH_PRODUCTS_START_BRAND, fetchProductsBrand);
   }
+
+  export function* fetchProductsColour({ payload }) {
+    try {
+
+      const products = yield handleFetchProductsColour(payload);
+      yield put(
+        setProducts(products)
+      );
   
+    } catch (err) {
+      // console.log(err);
+    }
+  }
+  
+  export function* onFetchProductsStartColour() {
+    yield takeLatest(productsTypes.FETCH_PRODUCTS_START_COLOUR, fetchProductsColour);
+  }
+
+  
+
   export function* deleteProduct({ payload }) {
     try {
       yield handleDeleteProduct(payload);
@@ -137,11 +139,11 @@ export function* addProduct({ payload }) {
     yield all([
       call(onAddProductStart),
       call(onFetchProductsStart),
-      call(onFetchProductsStartSize),
-      call(onFetchProductsStartDresstype),
-      call(onFetchProductsStartBrand),
       call(onDeleteProductStart),
       call(onFetchProductStart),
+      call(onFetchProductsStartBrand),
+      call(onFetchProductsStartColour),
+      call(onFetchProductsQueryStart),
     ])
   }
-  
+   

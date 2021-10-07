@@ -9,7 +9,6 @@ import FormSelect from './../../forms/FormSelect/FormSelect'
 const Item = (product) => {
   const dispatch = useDispatch();
 
-
   const {
     productName,
     productThumbnail,
@@ -20,8 +19,6 @@ const Item = (product) => {
   
     
   } = product;
-
-  console.log(product)
 
     
 
@@ -49,54 +46,20 @@ const Item = (product) => {
 
   return (
     <table className="cartItem" border="0" cellSpacing="0" cellPadding="10">
-      {/* <tbody>
-        <tr> 
-          <td>
-            <img src={productThumbnail} alt={productName} />
-          </td>
-          <td className="productName">
-            {productName}
-          </td>
-          <td className="quantity">
-            <span className="cartBtn1"
-              onClick={() => handleReduceItem(product)}>
-              <RemoveCircleIcon />
-            </span>
-            <span className="quant">
-              {quantity}
-            </span>
-            <span className="cartBtn2"
-              onClick={() => handleAddProduct(product)}>
-              <AddCircleIcon />
-            </span>
-          </td>
-          <td className="price">
-            Rs{productPrice}
-          </td>
-         
-          
-          
-          <td align="center">
-            <span className="cartBtn remove" onClick={() => handleRemoveCartItem(documentID)}>
-              <DeleteIcon className="deleteIcon" />
-            </span>
-          </td>
-        </tr>
-      </tbody> */}
-    
+  
     <div className="cartContainer">
      
 
       <div className="details">
 
         <div className="orderDetails">
-          {/* <div className="orderDetailsheading">
-              order Details - {} item(s)
-          </div> */}
+        
           <div className="orderinfo">
+            <div className="ordermob">
               <div className="orderimage">
                   <img src={productThumbnail} alt={productName} />
               </div>
+
               <div className="orderproductdetails">
                   <div className="ordercardtitle">
                       {productName}
@@ -122,90 +85,33 @@ const Item = (product) => {
                   </span> */}
                   
               </div>
-              <div className="orderincdec">
-                  <span className="cartBtn1"
-                      onClick={() => handleReduceItem(product)}>
-                      <RemoveCircleIcon />
-                    </span>
-                    <span className="quant">
-                      {quantity}
-                    </span>
-                    <span className="cartBtn2"
-                      onClick={() => handleAddProduct(product)}>
-                      <AddCircleIcon />
-                    </span>
+            </div>
+            <div className="ordermob1">
+                  <div className="orderincdec">
+                      <span className="cartBtn1"
+                          onClick={() => handleReduceItem(product)}>
+                          <RemoveCircleIcon />
+                      </span>
+                      <span className="quant">
+                          {quantity}
+                      </span>
+                      <span className="cartBtn2"
+                          onClick={() => handleAddProduct(product)}>
+                          <AddCircleIcon />
+                      </span>
                   </div>
-              
-              
+                  <div className="wishlistbtn">
+                        move to wishlist
+                      </div>
+                  <div className="deletebtn"onClick={() => handleRemoveCartItem(documentID)}>
+                        delete
+                  </div>
+            </div>
           </div>
-          <div className="itembuttons">
-                  <div className="itembuttonsremove" onClick={() => handleRemoveCartItem(documentID)}>
-                    Remove 
-                  </div>
-                  <div className="line">
-
-                  </div>
-                  <div className="wishlistremove">
-                    Wishlist 
-                  </div>
-              </div>
-
-          {/* <div className="placeorderbut">
-              <div className="ordercoupons">
-                  Complete this order and get 4800 loyalty points. Know more<br /><br />
-                  Add ₹ 27,005 to get Extra 10 % off. Use coupon: SUPERSAVER.
-              </div>
-              <div className="placeorderbutton">
-
-              </div>
-
-          </div> */}
+         
         </div>
 
-        {/* <div className="priceDetails">
-            <div className="priceproductdetials">
-                <div className="priceproductdetialstitle">
-                    Price Details
-                </div>
-                <div className="priceproductdetialsbag">
-                    <div className="pricedetialsbagtitle">
-                          Bag Total
-                    </div>
-                    <div className="pricedetialsbagprice">
-                          $ 23,334
-                    </div>
-                </div>
-                <div className="priceproductdetialsshipping">
-                    <div className="pricedetialsshiping">
-                        Shipping Charges
-                    </div>
-                    <div className="pricedetialsshipingmoney">
-                        $10
-                    </div>
-                </div>
-                <div className="priceproductdetialstax">
-                    <div className="pricedetialstax">
-                          GST
-                    </div>
-                    <div className="pricedetialstaxmoney">
-                            $231
-                    </div>
-                </div>
-                <div className="priceproductdetialstotal">
-                    <div className="pricedetialsordetotal">
-                          Order Total
-                    </div>
-                    <div className="pricedetialsordetotalprice">
-                          $ 23,334
-                    </div>
-                </div>  
-                
-                
-            </div>
-            <div className="placeorderbutton">
-
-            </div>
-        </div> */}
+      
 
       </div>
 

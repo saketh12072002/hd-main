@@ -5,10 +5,21 @@ export const addProductsStart = productData => ({
     payload:productData
 });
 
+export const fetchProductsQueryStart = (filterqueries={}) => ({
+    type:productTypes.FETCH_PRODUCTS_QUERY_START,
+    payload: filterqueries
+})
+
 export const fetchProductsStartSize = (filtersize={}) => ({
     type:productTypes.FETCH_PRODUCTS_START_SIZE,
     payload: filtersize
 })
+
+export const fetchProductsStartColour = (filtercolour={}) => ({
+    type:productTypes.FETCH_PRODUCTS_START_COLOUR,
+    payload: filtercolour
+})
+
 
 export const fetchProductsStartBrand = (filterbrand={}) => ({
     type:productTypes.FETCH_PRODUCTS_START_BRAND,

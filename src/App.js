@@ -33,8 +33,24 @@ import Dropdesign from './components/dropdesign/Dropdesign';
 import DesignersAdmin from './pages/DesignersAdmin/Designersadmin'
 import Desingner from './pages/Designer/Desingner';
 import Thankyou from './pages/Thankyou/Thankyou';
-
-
+import Fullloader from './components/Fullloader/Fullloader'
+import Blog from './pages/Blog/Blog';
+import Blogsdata from './pages/Blogsdata/Blogsdata';
+import Blogpage from './pages/Blog/Blogpage/Blogpage';
+import Anvshn from './pages/ANVSHN/Anvshn';
+import Cancelpolicy from './components/Footer/Cancelpolicy/Cancelpolicy';
+import Faqs from './components/Footer/Faqs/Faqs';
+import Shippingdel from './components/Footer/Shippingdel/Shippingdel'
+import FooterLayout from './layouts/FooterLayout';
+import Paymentoptions from './components/Footer/Paymentoptions/Paymentoptions';
+import Returnex from './components/Footer/Returnex/Returnex';
+import Wallet from './components/Footer/Wallet/Wallet';
+import Sizechart from './components/Footer/Sizechart/Sizechart';
+import Terms from './components/Footer/Terms/Terms';
+import ReactGa from 'react-ga';
+import Payment from './pages/Payment/Payment';
+import Designerdetails from './pages/Designerdetails/Designerdetails';
+import DesignersData from './pages/DesignersData/DesignersData';
 
 
 const App = (props) => {
@@ -42,34 +58,138 @@ const App = (props) => {
   const dispatch = useDispatch();
 
     useEffect(()=>{
+      ReactGa.initialize('UA-200005619-1')
+      ReactGa.pageview(window.location.pathname + window.location.search)
+    },[])
+
+
+    useEffect(()=>{
         dispatch(checkUserSession());
-       
-        
     },[]);
+
+    
 
     
     return (
       <div className="App">
         <div className="main">
-          {/* <AdminToolbar /> */}
           <Switch>
+          
           <Route exact path="/" render={() => (
            
               <Homepage />
+              
           
           )}
           />
   
-           <Route path="/registration" render={() =>(
+           <Route path="/signup" render={() =>(
           
               <Registration />
             
           )} />
+          
           <Route path="/thankyou" render={() =>(
           
           <Thankyou />
-        
+         
+          
       )} />
+      <Route exact path="/blogs" render={() =>(
+          
+          <MainLayout >
+          <Blog />
+        </MainLayout>
+         
+          
+      )} />
+
+
+
+      {/* footer */}
+      <Route  path="/cancelpolicy" render={() =>(
+          
+          <FooterLayout >
+           <Cancelpolicy />
+        </FooterLayout>
+         
+          
+      )} />
+      <Route  path="/faqs" render={() =>(
+          
+          <FooterLayout >
+          <Faqs />
+        </FooterLayout>
+         
+          
+      )} />
+      <Route exact path="/shipping" render={() =>(
+          
+          <FooterLayout >
+          <Shippingdel />
+        </FooterLayout>
+         
+          
+      )} />
+
+      <Route exact path="/paymentoptions" render={() =>(
+          
+          <FooterLayout >
+          <Paymentoptions />
+        </FooterLayout>
+         
+          
+      )} />
+
+      <Route exact path="/returns" render={() =>(
+          
+          <FooterLayout >
+          <Returnex />
+        </FooterLayout>
+         
+          
+      )} />
+
+      <Route exact path="/wallet" render={() =>(
+          
+          <FooterLayout >
+          <Wallet />
+        </FooterLayout>
+         
+          
+      )} />
+      <Route exact path="/sizechart" render={() =>(
+          
+          <FooterLayout >
+          <Sizechart />
+        </FooterLayout>
+         
+          
+      )} />
+
+      <Route exact path="/termsandconditions" render={() =>(
+          
+          <FooterLayout >
+          <Terms />
+        </FooterLayout>
+         
+          
+      )} />
+
+      {/* endfooter */}
+     
+      <Route path="/anvshn" render={() =>(
+          
+          <MainLayout >
+          <Anvshn />
+        </MainLayout>
+   
+      )} />
+      <Route path="/blogs/:blogID" render={() =>(
+            <MainLayout >
+              <Blogpage />
+            </MainLayout>
+             )} />  
 
 
             <Route exact path="/search" render={() =>(
@@ -87,7 +207,7 @@ const App = (props) => {
              <Route  path="/appointment" render={() =>(
             <MainLayout >
               <Appointment />
-              <Footer />
+          
             </MainLayout>
              )} />
 
@@ -104,6 +224,14 @@ const App = (props) => {
               <Footer />
             </MainLayout>
              )} />
+
+            <Route  path="/footersection" render={() =>(
+              <FooterLayout >
+                <Footer />
+              </FooterLayout>
+             )} />
+
+
              <Route exact path="/search/:filterType" render={() =>(
             <MainLayout >
               <Search />
@@ -140,9 +268,20 @@ const App = (props) => {
              )} /> 
 
             <Route path="/cart" render={() =>(
-            <MainLayout >
+            
               <Cart />
-            </MainLayout>
+           
+             )} /> 
+
+             
+
+            <Route path="/payment" render={() =>(
+              <WithAuth>
+               
+                  <Payment />
+               
+              </WithAuth>
+           
              )} /> 
 
             <Route path="/wishlist" render={() =>(
@@ -164,13 +303,19 @@ const App = (props) => {
             </MainLayout>
           ) }/>
 
+        <Route path="/designerdetails" render={()=>(
+            <MainLayout>
+                <Designerdetails />
+            </MainLayout>
+          ) }/>
+
 
           <Route path="/dashboard" render={()=>(
-            <WithAdminAuth >
+            <WithAuth >
                 <DashboardLayout>
                   <Dashboard />
               </DashboardLayout>
-            </WithAdminAuth>
+            </WithAuth>
               
             ) }/>
 
@@ -183,23 +328,28 @@ const App = (props) => {
               
             ) }/>
 
-          <Route path="/admin/designers" render={()=>(
+          {/* <Route path="/admin/designers" render={()=>(
             <WithAdminAuth >
                 <AdminLayout>
                   <DesignersAdmin />
                 </AdminLayout>
             </WithAdminAuth>
               
-            ) }/>
-            <Route path="/images" render={()=>(
+            ) }/> */}
+            <Route path="/admin/blogs" render={()=>(
             <WithAdminAuth >
                 <AdminLayout>
-                  <h1>Images</h1>
-                  <h1>Images</h1>
-                  <h1>Images</h1><h1>Images</h1>
-                  <h1>Images</h1>
-                  <h1>Images</h1>
-                  <h1>Images</h1>
+                <Blogsdata />
+
+                </AdminLayout>
+            </WithAdminAuth>
+              
+            ) }/>
+
+          <Route path="/admin/designers" render={()=>(
+            <WithAdminAuth >
+                <AdminLayout>
+                <DesignersData />
 
                 </AdminLayout>
             </WithAdminAuth>

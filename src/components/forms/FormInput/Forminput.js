@@ -3,21 +3,16 @@ import './styles.scss'
 
 function Forminput({handleChange, label, ...otherProps}) {
     return (
-        <div className="formRowinput">
-               
-            <div className="label">
-            {label && (
-                <label>
-                    {label}
-                </label>
-            )}  
-            </div>
-            <div className="innput">
-            <input className="formInput" onChange={handleChange} {...otherProps} />  
-            </div>
-               
+        <div className="formRow">
+          {label && (
+            <label>
+              {label}
+            </label>
+          )}
+    
+          <input className="formInput" onChange={handleChange} {...otherProps} />
         </div>
-    );
-}
+      );
+    }
 
 export default Forminput

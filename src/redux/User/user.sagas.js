@@ -23,7 +23,7 @@ export function* getSnapshotFromUserAuth(user,additionalData={}) {
 
 export function* emailSignIn({payload:{email,password}}){
     try {
-       const {user} = yield auth.signInWithEmailAndPassword(email, password);
+       const {user} = yield auth.signInWithEmailAndPassword(email.trim(), password);
        yield getSnapshotFromUserAuth(user)
     } catch(err){
         console.log(err)
@@ -79,7 +79,7 @@ export function* signUpUser({payload:{
     }
     
     try {
-           const {user} = yield auth.createUserWithEmailAndPassword(email,password);
+           const {user} = yield auth.createUserWithEmailAndPassword(email.trim(),password);
            const additionalData = {displayName}; 
            yield getSnapshotFromUserAuth(user, additionalData);
            

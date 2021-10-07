@@ -1,29 +1,25 @@
 
 .btn {
-    display: block;
-    width: 10%;
-    font-size: 1.4rem;
-    line-height: 1;
-    font-weight: 300;
-    text-transform: uppercase;
-    font-family: 'Ropa Sans', sans-serif;
-    // color: white;
-    // background: rgb(0, 1, 83);
-    // padding: 2rem 10px;
-    margin: 0 auto;
-    // border: 0;
-    outline: none;
-    cursor: pointer;
-    background-color:var(--white);
-        color: var(--blue);
-        border: 1px solid var(--blue);
-        width: 26rem;
-        letter-spacing: 2px;
-        padding: 1.6rem;
-        transition: 0.3s ease-out;
+  display: block;
+  width: 10%;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: 'Ropa Sans', sans-serif;
+  margin: 0 auto;
+  outline: none;
+  cursor: pointer;
+  background-color:var(--white);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  width: 26rem;
+  letter-spacing: 2px;
+  padding: 1.6rem;
+  transition: 0.3s ease-out;
 
-    &:hover{
-      font-weight: 800 ;
-      
-    }
+  &:hover{
+    font-weight: 800 ;
+    
   }
+}

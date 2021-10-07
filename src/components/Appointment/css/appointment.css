@@ -1,36 +1,49 @@
 .apdrcontainer {
+
   
-    margin: 50px auto;
+  
+   /* margin-top: 190rem; */
     width: 100%;
+    height: 100%;
     /* box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2); */
-    position: relative;
+    /* position: relative; */
     border-radius: 10px;
-    height: 220%;
+    /* height: 220%; */
     display: flex;
     justify-content:center ;
    text-align: center;
     /* background: var(--white); */
+    margin-bottom: 10rem;
     
 
   }
 
-  .heading {
+  .headingapp {
+    margin-top: 10rem;
+  }
+
+  .footer{
+    /* margin-top: 90rem; */
+  }
+
+  .headingapp {
     width: 50%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 13rem;
     /* margin-top: 2rem; */
   }
 
-  .heading h1{
+  .headingapph1{
     text-align: center;
-    font-size: 1.7rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
 
   }
 
-  .heading p{
-    font-size: 1.5rem;
+  .headingapppar{
+    font-size: 1.3rem;
     margin: 1rem;
   }
   
@@ -71,9 +84,12 @@
     color: rgb(54, 54, 54);
   }
   
- a
+ 
   
   .form {
+    height: 100%;
+    margin-top: 28rem;
+ 
     position: absolute;
     top: 50%;
     left: 50%;
@@ -84,6 +100,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
   }
 
   .form > .enterdetail {
@@ -96,7 +113,7 @@
     width: 30%;
     margin-bottom: 4rem;
     color: #fff;
-    background:var(--blue) ;
+    background:black ;
     text-align: center;
     margin-top: -3rem;
     /* height: 40rem; */
@@ -152,8 +169,8 @@
   .form-label {
     display: inline-block;
     font-size: 1.3rem;
-    letter-spacing: 1px;
-    font-weight: 600;
+    /* letter-spacing: 1px; */
+    font-weight: 700;
     margin-bottom: 10px;
     color: rgb(37, 37, 37);
     text-align: left;
@@ -195,13 +212,15 @@
     /* margin: 0 auto; */
     outline: none;
     cursor: pointer;
-    background-color:var(--white);
-        color: var(--blue);
+    background-color:var(--black);
+        color: var(--white);
         border: 1px solid var(--blue);
         /* width: 26rem; */
         letter-spacing: 2px;
         padding: 1.6rem;
         transition: 0.3s ease-out;
+
+    
   }
 
   .form-input-btn:hover {

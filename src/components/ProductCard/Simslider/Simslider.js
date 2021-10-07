@@ -7,21 +7,10 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import Button from './../../forms/Button/Button'
 import AddIcon from '@material-ui/icons/Add';
 
-function Simslider(product) {
-
+function Simslider(similiar) {
+    const {similiarProduct1Name,similiarProduct1id,similiarProduct1image,similiarProduct1Price} = similiar
     const dispatch = useDispatch();
     const history = useHistory();
-    const {
-            documentID,
-            productThumbnail,
-            productName,
-            productPrice,
-            productSize,
-            similiarProduct1Name,
-            similiarProduct1Price,
-            similiarProduct1image
-        
-    } = product;
 
 
     const handleAddToCart = (product) => {
@@ -38,35 +27,35 @@ function Simslider(product) {
 
     return (
 
-        <div className="product">
+        <div className="productslider">
             <div className="thumb">
-                <Link to={`/product/${documentID}`}>
-                <img src={productThumbnail} alt={productName} />
+                <Link to={`/product/${similiarProduct1id}`}>
+                <img src={similiarProduct1image} alt={similiarProduct1Name} />
                 </Link>
             </div>
             
             <div className="detailss">
-                <ul>
-                    <li className="name">
-                        <Link to={`/product/${documentID}`}>
-                        <span>
-                            {productName}
-                        </span>
+                
+                    <div className="nameslider">
+                        <Link to={`/product/${similiarProduct1id}`}>
+                        
+                            {similiarProduct1Name}
+                        
                         </Link>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <span className="price">
-                            {productPrice}
+                            {similiarProduct1Price}
                         </span>
-                    </li>
+                    </div>
                     
                     
-                </ul>
-                    <div >
+        
+                    {/* <div >
                         <Button  className="addToCart"{...configAddToCardBtn} onClick={()=>handleAddToCart(product)}>
                             <AddIcon />
                         </Button>
-                    </div>
+                    </div> */}
 
             </div>
         </div>

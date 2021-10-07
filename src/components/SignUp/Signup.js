@@ -1,20 +1,21 @@
 import React, {useState,useEffect} from 'react'
 import {signUpUserStart,googleSignInStart,facebookSignInStart} from './../../redux/User/user.action'
-import {Redirect, withRouter} from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import './styles.scss'
 import Forminput from '../forms/FormInput/Forminput'
 import  Button from '../forms/Button/Button'
 import { useDispatch,useSelector } from "react-redux";
 import AuthWrapper from "../AuthWrapper/Authwrapper";
-import {Link} from 'react-router-dom'
-import logo2 from './../../assets/New folder/logo2.png'
 import logo4 from './../../assets/New folder/logo4.png'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 import Modal from './../Modal/Modal'
-import AcUnitIcon from '@material-ui/icons/AcUnit';
+import CloseIcon from '@material-ui/icons/Close';
+import emailjs from 'emailjs-com';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+import Fullloader from './../../components/Fullloader/Fullloader'
 
 const mapState = ({user}) => ({
     currentUser:user.currentUser,
@@ -33,6 +34,9 @@ function Signup(props) {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
     const [hideModal, setHideModal] = useState(true);
+    const [checkpass,setCheckpass] = useState(false)
+    const [passerror, setPasserror] = useState('')
+    const [loader, setLoader] = useState(false)
 
     const reset = () =>{
         setDisplayName('');
@@ -42,14 +46,24 @@ function Signup(props) {
         setErrors('');
 
     }
+   
 
-    useEffect(()=>{
 
-        setTimeout(()=>{
-            toggleModal()
-        },1000)
-        
-    },[])
+    function sendEmail(e) {
+        // e.preventDefault();
+    
+        emailjs.sendForm('service_g6rbvtg', 'template_0fk3m0a', e.target, 'user_uh9FZHGEceRQL50NMAOUV')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+            //   console.log(error.text);
+          });
+          e.target.reset()
+      }
+
+  
+
+
 
 
     useEffect(()=>{
@@ -64,17 +78,50 @@ function Signup(props) {
             setErrors(userErr);
         }
     }, [userErr])
+   
 
     
     const handleFormSubmit = async(e) => {
+        
         e.preventDefault();
-        if(password!=confirmPassword)
-        {
-            alert('passwords does not match')
+        console.log('errors')
+        console.log(errors)
+       
+        if(passwordcheck()===true){
+            sendEmail(e);
+            dispatch(signUpUserStart({displayName,email,password,confirmPassword})) 
+            setLoader(true)
+            setPasserror('')
+            setTimeout(()=>{
+                setLoader(false)
+            },3000)
         }
-        dispatch(signUpUserStart({displayName,email,password,confirmPassword})) 
+        else {
+            setPasserror('*')
+        }
+        
+        
+    }
+    
+    const passwordcheck =() => {
+        
+       
+        if(password===confirmPassword && password.length >= 8)
+        {
+            setCheckpass(true)
+            return true
+        }
+        
+        else {
+            setCheckpass(false)
+        }
     }
 
+    useEffect (()=>{
+        passwordcheck();
+    },[confirmPassword])
+
+  
     const handleGoogleSignIn =() =>{
         dispatch(googleSignInStart());
     }
@@ -132,13 +179,14 @@ function Signup(props) {
                         <div className="welcomeanvshn">
                             Welcome to ANVSHN
                         </div>
+                       
                     
                         <div className="signupformscontent">
                                 <form className="signupform" onSubmit={handleFormSubmit}>
                                     <div className="formtitle">User name</div>
                                     <input className="signupforminput"
                                         type="text"
-                                        name="displayName"
+                                        name="displayname"
                                         value={displayName}
                                         placeholder=""
                                         onChange={e=>setDisplayName(e.target.value)}
@@ -153,9 +201,14 @@ function Signup(props) {
                                         value={email}
                                         placeholder=""
                                         onChange={e=>setEmail(e.target.value)}
+                                        required
                                         
                                     />
-                                    <div className="formtitle">Password</div>
+                                    <div className="checkp">
+                                        <div className="formtitle">Password</div>
+                                        <div className="" style={{ color: "red" }} >{passerror}</div>
+                                    </div>
+                                    
                                     <input className="signupforminput"
                                         type="password"
                                         name="password"
@@ -164,7 +217,13 @@ function Signup(props) {
                                         onChange={e=>setPassword(e.target.value)}
                                         
                                     />
-                                    <div className="formtitle">Confirm Password</div>
+                                    <div className="passwarning">* your password must be between 8 and 30 characters</div>
+                                    <div className="checkp">
+                                        <div className="formtitle">Confirm Password</div>
+                                        <div className={checkpass? 'green' : 'nogreen'}>
+                                                <DoneOutlineIcon />
+                                        </div>
+                                    </div>
                                     <input className="signupforminput"
                                         type="password"
                                         name="confirmPassword"
@@ -173,6 +232,8 @@ function Signup(props) {
                                         onChange={e=>setConfirmPassword(e.target.value)}
                                         
                                     />
+                                    
+                                    
 
                                     <Button className="signupbutton" type="submit">
                                         Register
@@ -232,14 +293,18 @@ function Signup(props) {
                     </div>  
                 </div>
                 
+                <div className={loader? 'fullloader':'fulldeactive'}>
+                    <Fullloader />
+                </div>
+                
                 
                 <Modal {...configModal}>
                         <div className="modaltextpara">
                             <div className="" onClick={() => toggleModal()}>
-                                <AcUnitIcon  />
+                                <CloseIcon  />
                             </div>
                             
-                            <div className="modaltext">Hola, Something awesome is in the works</div>
+                            <div className="modaltext">Hola! Something awesome is in the works</div>
                             <div className="modalpara">We are working on an exciting product that we think you'll really like. <b>Sign up</b> yourself and crack the best offers on the launch day.</div>
                         </div>
                         

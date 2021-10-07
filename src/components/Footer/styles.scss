@@ -6,19 +6,35 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1450px;
-    margin-top: 6rem;
+    // margin-top: 6rem;
     background: var(--black);
-    // background-color:var(--blue);
-    // background: var(--white);
-    // padding-top: 8rem
+
+    .getourmails{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 1rem;
+      background-color: var(--black);
+      color: white;
+      height: 10rem;
+      width: 100%;
+      border-bottom: 1px solid rgb(112, 112, 112);
+      margin-bottom: 3rem;
+
+      .MuiSvgIcon-root{
+          font-size: 2rem;
+          color: white;
+          margin: 2rem 2rem 0 2rem;
+      }
+    }
   
    
 
     .info {
 
         display: inline-grid;
-        grid-template-columns: 23% 23% 23% 23% ;
+        grid-template-columns: 20% 20% 20% 20% ;
         justify-content: center;
         grid: center;
         grid-gap: 0;
@@ -33,6 +49,7 @@
             width: 100%;
             letter-spacing: 2px;
             color: var(--white);
+            margin-bottom: 2rem;
             // color: var(-blue);
         }
 
@@ -86,10 +103,27 @@
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
 
     .footer{
-        display: none;
+        display: flex;
+        flex-direction: column;
+        .info{
+            display: flex;
+            flex-direction: column;
+            letter-spacing: 1px;
+           width: 80%; 
+
+            h4{
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .policy{
+            letter-spacing: 1px;
+            line-height: 2rem;
+        }
     }
 
 }

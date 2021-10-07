@@ -1,0 +1,103 @@
+.designerproducts{
+    width: 100%;
+    margin-top: 4rem;
+
+    .designerimageheader{
+        width: 100%;
+        img{
+            width: 100%;
+            height: 30rem;
+            object-fit: contain;
+        }
+    }
+    
+
+    .designerproductdetails{
+        
+        display:grid;
+        grid-template-columns: 100%;
+        
+
+        flex-direction: column;
+        .designerproductdetailsflex{
+            display: flex;
+            flex-direction: column;
+
+            .designerproductdetailscontent{
+                font-weight: 300;
+                margin-left: 1rem;
+                // line-height:1.5rem;
+               .designerproductsbrandname{
+                   display: flex;
+                   justify-content: space-between;
+                   flex-direction: row;
+                font-size: 1.2rem;
+                transition: 0.3s ease-in-out;
+                margin-top: 0.3rem;
+                // margin-bottom: 0.2rem;
+                .pop{
+
+                    .iconcol{
+                      color: rgb(255, 55, 55);
+                    }
+                    .iconcoler{
+                     
+                      color: rgb(172, 172, 172);
+    
+                    }
+                    
+                  
+                  }
+
+                .bookmark{
+                    .MuiSvgIcon-root{
+                        // margin-right: 1rem;
+                        // fill: white;
+                        // background-color: blue;
+                    color: brown;
+                    }
+                    // background-color: black ;
+                }
+                .bookmarkactive{
+                    // background-color: black;
+                    .MuiSvgIcon-rootactive{
+                        fill: black;
+                    }
+
+                }
+
+                    
+                   
+                a{
+                    // color: black;
+                }
+                &:hover {
+                    // font-weight: 700;
+                }
+               }
+               .designerproductsname{
+                   margin-bottom: 0.4rem;
+                font-size: 1.2rem;
+                text-align: left;
+                font-weight: 400;
+                a{
+                    color: black;
+                }
+               }
+
+               .designerproductsprices{
+                   display: flex;
+                   flex-direction: row;
+                   font-size: 1.2rem;
+                   font-weight: 400;
+                   .discountprice{
+                       text-decoration: line-through;
+                       color: rgb(153, 45, 45);
+                       margin-left: 2rem;
+                   }
+
+               }
+            }
+        }
+    }
+}

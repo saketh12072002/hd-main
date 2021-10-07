@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import './styles.scss'
 import AliceCarousel from 'react-alice-carousel';
 import Button from './../forms/Button/Button'
@@ -13,6 +13,7 @@ import Footer from '../Footer/Footer';
 import {Link} from 'react-router-dom'
 import Headertwo from './../../components/Headertwo/Headertwo'
 import Header from '../Header/Header'
+import Shopnow from './Shopnow/Shopnow';
 
 const mapState = ({ productsData }) => ({
     products: productsData.products
@@ -23,7 +24,10 @@ function Directory() {
 
     const dispatch = useDispatch();
     const { products } = useSelector(mapState);
-    
+    const [data,setData] = useState()
+        const daata = products;
+        console.log(daata)
+
 
     useEffect(() => {
         dispatch(
@@ -31,8 +35,7 @@ function Directory() {
         )
       }, []);
 
-      console.log('directory')
-      console.log(products)
+   
       
 
       if (!Array.isArray(products.data)) return null;
@@ -50,10 +53,13 @@ function Directory() {
         // dots: true,
         arrow:true,
         infinite: true,
-        speed: 500,
+        speed: 700,
         slidesToShow: 4,
         slidesToScroll: 2,
         adaptiveHeight: true,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        overflow:true,                            
         
         responsive: [{
             breakpoint: 1024,
@@ -61,15 +67,46 @@ function Directory() {
                 slidesToShow: 2
             }
         }, {
-            breakpoint: 650,
+            breakpoint: 480,
             settings: {
-                initialSlide: 2,
+                initialSlide: 1,
+                slidesToShow: 2,
+                autoplaySpeed: 4000,
+            }
+        }]
+      };
+
+
+      var settingss = {
+        // dots: true,
+        arrow:true,
+        infinite: true,
+        speed: 700,
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        adaptiveHeight: true,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        overflow:true,                            
+        
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
                 slidesToShow: 2
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                initialSlide: 1,
+                slidesToShow: 1,
+                autoplaySpeed: 4000,
             }
         }]
       };
      
-
+      const handleChange = () => {
+        setData('asdsd')
+      }
      
    
 
@@ -82,93 +119,117 @@ function Directory() {
     return (
         <div className="directory">
               <Headertwo />
-              <div className="explore">
-                 Explore
-              </div>
+
+              
+              
                 <div className="hero">
-                    <div className="img">                       
+                    
+                    <div className="carouselimg">                       
                        <AliceCarousel fadeOutAnimation
-                               mouseTrackingEnabled={true}
+                              //  mouseTrackingEnabled={true}
                                touchTracking onResized
                                animationType="fadeIn"
                                overflow="hidden"
-                               infinite autoPlay autoPlayInterval="8000">
-                                <img src="https://images.pexels.com/photos/2293102/pexels-photo-2293102.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" className="sliderimg"/>
-                                <img src="https://images.pexels.com/photos/4612681/pexels-photo-4612681.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="sliderimg"/>
-                                <img src="https://images.pexels.com/photos/6500535/pexels-photo-6500535.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="sliderimg"/>
-                                <img src="https://images.pexels.com/photos/46244/girl-portrait-carnival-retro-46244.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" className="sliderimg"/>
+                               animationDuration={200}
+                               infinite autoPlay autoPlayInterval="2000">
+                               
+                            
+                                <img src="https://i.postimg.cc/vTSk8WWR/cr7.jpg" className="sliderimg"/>
+                                <img src="https://i.postimg.cc/5t7sjZC7/cr1.jpg" className="sliderimg"/>
+                                <img src="https://i.postimg.cc/vTSk8WWR/cr7.jpg" className="sliderimg"/>
+                                <img src="https://i.postimg.cc/CKLvhFzn/cr4.jpg" className="sliderimg"/>
+                                <img src="https://i.postimg.cc/cCYh9C52/cr6.jpg" className="sliderimg"/>
+                                <img src="https://i.postimg.cc/RF2GLKGw/cr2.jpg" className="sliderimg"/>
+                                <img src="https://i.postimg.cc/8PLq2Q1W/gar.jpg" className="sliderimg"/>
+                                
                         </AliceCarousel>
-                    </div>                  
-                </div>
-
-                <div className="underhero">
-                    {/* <img src="https://images.pexels.com/photos/3742709/pexels-photo-3742709.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" /> */}
-                   
-                    
-                    <Button className="underherobtn" {...configAddToCartBtn} >
-                            SHOP NOW
-                        </Button>
-                </div>
-
-
-                <div className="gridofgrid">
-                    <div className="ordergrid">
-
-                        <div className="firstgrid">
-                          <div className="name">
-                            ANVSHN
+                    </div>   
+                    <div className="whiteboard">
+                          <div className="whiteboarddata">
+                            <h3>ANVSHN</h3>
+                          prints and quint essential house codes
+                            {/* {data} */}
                           </div>
-                       
-                          <img src ="https://images.pexels.com/photos/2466756/pexels-photo-2466756.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-                        </div>
-                        
-                        <div className="secondgrid">
-                            <div className="mdgrid">
-                               {/* men designer */}
-                               <div className="mendesigner">
-                                 MEN DESIGNER
-                              </div>
-                               <img src ="https://images.pexels.com/photos/5264948/pexels-photo-5264948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
-                            </div>
-                            <div className="wdgrid">
-                              <div className="womendesigner">
-                                 WOMEN DESIGNER
-                              </div>
-                            <img src ="https://images.pexels.com/photos/6774363/pexels-photo-6774363.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="bar">
-                  <div className="store">
-                    store
-                  </div>
-                  <div className="appointmentbar">
-                    appointment
-                  </div>
-                  <div className="collabration">
-                    collabration
-                  </div>
-                  <div className="Drop">
-                    Drop your design
-                  </div>
+                    </div>               
                 </div>
 
-                <Link to="/dropdesign">
-                <div className="dropdesign">
-                  <div className="dropname">
-                      <div className="name">DROP DESIGN</div>
+                <div className="cats">
+                  <div className="cattitle">
+                      <div className="headtitle">
+                              <div className="line1">
+
+                              </div>
+                              <div className="title">
+                                  The Latest
+                              </div>
+                              <div className="line2">
+                                
+                              </div>
+                      </div>
+                      <div className="subtitle">
+                            Our freshest arrivals
+                      </div>
                   </div>
-                  
-                    <img src ="https://image.freepik.com/free-photo/blue-oil-paint-strokes-textured_53876-96059.jpg" />
-                  
-                </div>
-                </Link>
-                
-                
-                    <div className="newarrival">
-                      <h1>New Arrivals</h1>
-                    <Slider  {...settings}>
+                  <div className="catsections">
+                      <div className="firstcat">
+                          <div className="title">
+                                Consciously Crafted
+                          </div>
+                          <div className="catline">
+
+                          </div>
+                          <div className="content">
+                                A curation of all sustainable and  conscously crafted outfits for a better tomorrow
+                          </div>
+                    </div>
+                    <div className="secondcat">
+                    <div className="title">
+                            Laidback Summer
+                      </div>
+                      <div className="catline">
+
+                      </div>
+                      <div className="content">
+                            A curation of all sustainable and  conscously crafted outfits for a better tomorrow
+                      </div>
+                      
+                    </div>
+                    <div className="thirdcat">
+                    <div className="title">
+                            Couple Collection
+                      </div>
+                      <div className="catline">
+
+                      </div>
+                      <div className="content">
+                            A curation of all sustainable and  conscously crafted outfits for a better tomorrow
+                      </div>
+                    </div>
+                  </div>
+               
+              </div>
+
+
+              {/* ..................................... */}
+              <div className="newarrivalbg">
+              <div className="newarrival">
+                        <div className="gridtitle">
+                              <div className="headtitle">
+                                  <div className="line1">
+
+                                  </div>
+                                  <div className="title">
+                                      Designers
+                                  </div>
+                                  <div className="line2">
+                                    
+                                  </div>
+                              </div>
+                              <div className="subtitle">
+                             Shop By Designers
+                              </div>
+                        </div>
+                    <Slider  {...settingss}>
                         {products.data.map((product, pos) => {
                             const { productThumbnail, productName, productPrice } = product;
                             if (!productThumbnail || !productName ||
@@ -181,14 +242,153 @@ function Directory() {
                                 
                            
                             return (
+                                        <Shopnow key={pos} {...product} />                   
+                            );
+                        })}
+                       </Slider>
+                    </div>
+              </div>
+
+                    {/* ........................................... */}
+
+              
+
+        {/*-----------the latest grid section------------- */}
+
+                <div className="gridofgrid">
+                    <div className="gridtitle">
+                          <div className="headtitle">
+                              <div className="line1">
+
+                              </div>
+                              <div className="title">
+                                  ANVSHN
+                              </div>
+                              <div className="line2">
+                                
+                              </div>
+                          </div>
+                          <div className="subtitle">
+                            Explore the Collection
+                          </div>
+                    </div>
+                    <div className="gridcontent">
+                      <div className="firstgrid">
+                        <div className="fristgridfirst">
+                            <div className="section">
+                                <div className="title">
+                                    Men
+                                </div>
+                                <div className="subtitle">
+                                    CONTEMPORARY CLASSICS
+                                </div>
+                                <div className="line">
+
+                                </div>
+                                <div className="shopnow">
+                                  SHOP NOW  
+                                </div>
+                            </div>
+                        </div>
+                        <div className="fristgridsecond">
+                            <div className="section">
+                                <div className="title">
+                                    Women
+                                </div>
+                                <div className="subtitle">
+                                    CONTEMPORARY
+                                </div>
+                                <div className="line">
+
+                                </div>
+                                <div className="shopnow">
+                                  SHOP NOW  
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                        <div className="secondgrid">
+                            <div className="secondgridfirst">
+                                <div className="section">
+                                    <div className="title">
+                                        Designers
+                                    </div>
+                                    <div className="subtitle">
+                                        Marriage
+                                    </div>
+                                    <div className="line">
+
+                                    </div>
+                                    <div className="shopnow">
+                                      SHOP NOW  
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="secondgridsecond">
+                                    <div className="section">
+                                        <div className="title">
+                                            Anvshn
+                                        </div>
+                                        <div className="subtitle">
+                                            CLASSICS
+                                        </div>
+                                        <div className="line">
+
+                                        </div>
+                                        <div className="shopnow">
+                                          SHOP NOW  
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+
+                
+
+
+        {/*-----------end of the latest grid section------------- */}
+              
+               
+                
+                
+                
+        <div className="newarrivalbg">
+                    <div className="newarrival">
+                        <div className="gridtitle">
+                              <div className="headtitle">
+                                  <div className="line1">
+
+                                  </div>
+                                  <div className="title">
+                                      Latest Designs
+                                  </div>
+                                  <div className="line2">
+                                    
+                                  </div>
+                              </div>
+                              <div className="subtitle">
+                              Explore new on ANVSHN
+                              </div>
+                        </div>
+                    <Slider  {...settings}>
+                        {products.data.map((product, pos) => {
+                            const { productThumbnail, productName, productPrice } = product;
+                            if (!productThumbnail || !productName ||
+                            typeof productPrice === 'undefined') return null;
+                           
+                            return (
                                         <Newarrivals key={pos} {...product} />                   
                             );
                         })}
                        </Slider>
                     </div>
+                        
+                    <div className="gap"></div>
                     <Footer />
                     
               
+        </div>
         </div>
     )
 }

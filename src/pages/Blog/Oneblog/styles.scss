@@ -1,0 +1,82 @@
+.oneblog{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    // margin-left: 2rem;
+    &:hover .blogtitle{
+        text-decoration: underline;
+    }
+
+    .blogpicture {
+        width: 35rem;
+        height: 25rem;
+        &:hover .backoverlay{
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        
+        img{
+            width: 100%;
+            height:100%;
+            object-fit: cover;
+        }
+        // background-image: url('https://www.theannaedit.com/wp-content/uploads/2021/04/R1-02301-020A-1920x1284.jpg');
+        // background-size: cover;
+        // background-position: center;
+        .backoverlay{
+            visibility: hidden;
+            position: absolute;
+            top: 0%;
+            // left: 50%;
+            width: 35rem;
+            height: 25rem;
+            background-color: rgba(207, 207, 207, 0.3);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+
+            .overlay{
+                position: absolute;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                color: var(--gold,0.8);
+                background-color: rgba(255, 255, 255, 1);
+                transform: translate(-50%, -50%);
+                border: 1px white solid;
+                border-radius: 50px;
+                padding: 1.7rem 2.6rem 1.7rem 2.6rem;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                transition: 0.3s ease-in-out;
+                font-weight: 800;
+                    &:hover{
+                        text-decoration:underline;
+                        background-color: white;
+                    }
+            }
+        }
+        
+    }
+
+    .blogdate{
+        font-size: 1rem;
+        margin: 1rem;
+        text-align: center;
+        color: var(--black);
+    }
+
+    .blogtitle{
+        width: 100%;
+        text-align: center;
+        font-size: 1.4rem;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+        color: var(--black);
+       
+    }
+}

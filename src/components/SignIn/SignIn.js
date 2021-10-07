@@ -48,28 +48,29 @@ function SignIn(props ) {
                 <div className="formWrap">
                 
                     <form className="singinform" onSubmit={handleSubmit}>
-
+                        <div>
                         <input className="signinforminput" type="email" name="email" 
                         value={email} placeholder="EMAIL" 
                             onChange={e=>setEmail(e.target.value)}
                         />
-
+                        </div>
+                        <div>
                         <input className="signinforminput" type="password" name="password" 
                         value={password} placeholder="PASSWORD" 
                             onChange={e=>setPassword(e.target.value)}
                         />
-
+                        </div>
+                        <div>
                         <Button className="button" type="submit">
                             Login
                         </Button>
-
-                        <div className="socialSignin">
-                        <div className="row">
-                        <Button className="button1" onClick={handleGoogleSignIn}>
-                                Sign in with google
-                            </Button>
                         </div>
-                        </div>
+                            <div>
+                            <Button className="button1" onClick={handleGoogleSignIn}>
+                                    Sign in with google
+                                </Button>
+                            </div>
+                        
                     </form>
                 </div>
             </div>

@@ -1,0 +1,2 @@
+// export const publishableKey='pk_live_51J7uhbSI5Fq9ofyyJeoDhil7awpolW51gyHo3UScRd3WgRUdJeKVHJaFtCtSURm5PiCMIIo6vCS0GIM3Ypi9ra4S00EvJ8EgVb';
+export const publishableKey='pk_test_51J7uhbSI5Fq9ofyyiOSdUIdghcVRrAEnSWcdUqZUzaoXhxvLKqlW9FoWF58b6SqcbeFqUUI7bmdApJ8iHzTACFPU00sXNe9ctg';

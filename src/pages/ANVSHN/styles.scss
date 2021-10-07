@@ -1,0 +1,416 @@
+.anvshnpage{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    
+    
+    .anvshnpageimg{
+        width: 100%;
+        height: 35vh;
+        object-fit: contain;
+        background-color: blue;
+        margin-top: 6rem;
+        overflow: hidden;
+
+        // margin-bottom: 6rem;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: inline-block;
+            transition: 0.5s ease-in-out;
+            vertical-align: middle;
+
+            &:hover {
+
+                 transform: scale(1.02);
+            }
+        }
+    }
+    .anvshnpagediscount{
+        width: 100%;
+        height: 100vh;
+        display:flex;
+        justify-content:baseline;
+        align-items: center;
+        flex-direction: column;
+        // margin-bottom: 10rem;
+        
+        .discounttitle{
+            font-size: 1.7rem;
+            color: rgb(68, 68, 68);
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            margin-top: 6rem;
+            
+        }
+        .line{
+            margin-bottom: 2rem;
+            height: 1px;
+            width: 14rem;
+            background-color: rgb(151, 151, 151);
+        }
+        .discountsection{
+            width: 100%;
+            height: 30rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            
+        .discount1{
+            width: 30%;
+            height: 30rem;
+            display: flex;
+            flex-direction: column;
+            // overflow: hidden;
+            // background-color: rgb(131, 131, 131);
+            .discountimage{
+              
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;  
+                    transition: 0.5s ease-in-out;
+                    cursor: pointer;
+                   
+                }
+            }
+            .discountcontent{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .discountname{
+                    font-family: 'Playfair Display', serif; 
+                    font-size: 2rem;
+                    font-weight: 600;
+                    color: var(--black);
+                    margin-bottom: 2rem;
+                    margin-top: 2rem;
+                    cursor: pointer;
+
+                }
+                .discountbutton{
+                    text-transform: uppercase;
+                    font-size: 1rem;
+                    background-color: var(--gold);
+                    color: white;
+                    font-weight: 600;
+                    padding: 1rem;
+                    cursor: pointer;
+                    &:hover{
+                        font-weight: 800;
+                    }
+                }
+                
+            }
+            
+        }
+    }
+    }
+    .shopbydesigner{
+        width: 100%;
+        height: 125vh;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        margin-bottom: 8rem;
+        
+        .designertitle{
+            font-size: 1.7rem;
+            color: rgb(68, 68, 68);
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 5rem;
+            margin-top: 8rem;
+            .line{
+                margin-top: 2rem;
+                height: 1px;
+                width: 60%;
+                background-color: rgb(151, 151, 151);
+            }
+        }
+      
+
+        .designerimages{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            
+            .anvshnlong{
+                width: 32%;
+                height: 100%;
+                overflow: hidden;
+                .anvshnlongimage{
+                    
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain; 
+                        transition: 0.5s ease-in-out;
+                        overflow: hidden;
+                        cursor: pointer;
+                        &:hover {
+                            transform: scale(1.02);
+                        }
+                    }
+                }
+                .anshnlongcontent{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    .designername{
+                        font-family: 'Playfair Display', serif; 
+                        font-size: 2rem;
+                        font-weight: 600;
+                        color: var(--black);
+                        margin-bottom: 1rem;
+                        margin-top: 1rem;
+                        cursor: pointer;
+                    }
+                    .designerbutton{
+                        text-transform: uppercase;
+                        font-size: 1rem;
+                        background-color: var(--gold);
+                        color: white;
+                        font-weight: 600;
+                        padding: 1rem;
+                        cursor: pointer;
+                        &:hover{
+                            font-weight: 800;
+                        }
+                    }
+                } 
+               
+            }
+            .anvshnshort{
+                width: 65%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                    .firstsection{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            width: 100%;
+                            height: 50%;
+
+                            
+
+                        .designer{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            margin-right: 2rem;
+                            height: 100%;
+                            
+                            .designerimage{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                                overflow: hidden;
+                                cursor: pointer;
+                                
+                                img{
+                                    width: 100%;
+                                    height: 100%;
+                                    transition: 0.5s ease-in-out;
+                                    cursor: pointer;
+                                    &:hover{
+                                        transform: scale(1.02);
+                                    }
+                                }
+                            }
+                            .designercontent{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-direction: column;
+                                .designername{
+                                    font-family: 'Playfair Display', serif; 
+                                    font-size: 2rem;
+                                    font-weight: 600;
+                                    color: var(--black);
+                                    margin-bottom: 1rem;
+                                    margin-top: 1rem;
+                                    cursor: pointer;
+                                }
+                                .designerbutton{
+                                    text-transform: uppercase;
+                                    font-size: 1rem;
+                                    background-color: var(--gold);
+                                    color: white;
+                                    font-weight: 600;
+                                    padding: 1rem;
+                                    cursor: pointer;
+                                    &:hover{
+                                        font-weight: 800;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .secondsection{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        width: 100%;
+                        height: 50%;
+                        margin-top: 3rem;
+                    .designer{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        margin-right: 2rem;
+                        height: 100%;
+                        
+                        .designerimage{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            overflow: hidden;
+                            img{
+                                width: 100%;
+                                height: 100%;
+                                transition: 0.5 ease-in-out;
+                                cursor: pointer;
+                                &:hover{
+                                    transform: scale(1.02);
+                                }
+                            }
+                        }
+                        .designercontent{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: column;
+                            .designername{
+                                font-family: 'Playfair Display', serif; 
+                                font-size: 2rem;
+                                font-weight: 600;
+                                color: var(--black);
+                                margin-bottom: 1rem;
+                                margin-top: 1rem;
+                                cursor: pointer;
+                            }
+                            .designerbutton{
+                                text-transform: uppercase;
+                                font-size: 1rem;
+                                background-color: var(--gold);
+                                color: white;
+                                font-weight: 600;
+                                padding: 1rem;
+                                cursor: pointer;
+                                &:hover{
+                                    font-weight: 800;
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .shopbycategory{
+        // width: 100%;
+        // height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 8rem;
+        .shopbycategorytitle{
+            font-size: 1.7rem;
+            color: rgb(68, 68, 68);
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 4rem;
+            margin-top: 9rem;
+
+            .line{
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                height: 1px;
+                width: 14rem;
+                background-color: rgb(151, 151, 151);
+            }
+
+        }
+       
+        .shopbycategorycontent{ 
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-row-gap: 5rem;
+
+            .designer{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-right: 2rem;
+                height: 100%;
+                
+                .designerimage{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        transition: 0.5 ease-in-out;
+                        cursor: pointer;
+                        &:hover{
+                            transform: scale(1.02);
+                        }
+                    }
+                }
+                .designercontent{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    .designername{
+                        font-family: 'Playfair Display', serif; 
+                        font-size: 2rem;
+                        font-weight: 600;
+                        color: var(--black);
+                        margin-bottom: 1rem;
+                        margin-top: 1rem;
+                        cursor: pointer;
+                    }
+                    .designerbutton{
+                        text-transform: uppercase;
+                        font-size: 1rem;
+                        background-color: var(--gold);
+                        color: white;
+                        font-weight: 600;
+                        padding: 1rem;
+                        cursor: pointer;
+                        &:hover{
+                            font-weight: 800;
+                        }
+                        
+                    }
+                }
+            }
+
+        }
+
+        
+    }
+}

@@ -2,35 +2,42 @@ import React from 'react'
 import './css/appointment.css'
 import Button from './../forms/Button/Button'
 import emailjs from 'emailjs-com';
+import Footer from '../Footer/Footer';
+import { useHistory } from 'react-router-dom';
 
 function Appointment() {
-
+    const history = useHistory();
     function sendEmail(e) {
         e.preventDefault();
     
-        emailjs.sendForm('service_g6rbvtg', 'template_ke68p7o', e.target, 'user_uh9FZHGEceRQL50NMAOUV')
+        emailjs.sendForm('service_f3vayds', 'template_oysmbvj', e.target, 'user_uh9FZHGEceRQL50NMAOUV')
           .then((result) => {
               console.log(result.text);
           }, (error) => {
               console.log(error.text);
           });
           e.target.reset()
+        //   history.push('/djabkassjd');  
       }
+        
+
+      
 
     return (
         <div className="apdrcontainer">
-            <div className="heading">
-                    <h1>
+            <div className="headingapp">
+                    <h1 className="headingapph1">
                         request an Appointment
                     </h1>
-                    <p>
-                    Find the perfect present or create your personalized look with the help of our staff. Book an appointment now in a Valentino boutique.
+                    <p className="headingapppar">
+                    Find the perfect present or create your personalized look with the help of our staff.< br /> Book an appointment now in a Anvshn.
                     </p>
             </div>
+            
             <div className="Enterdetails">
-            <form   onSubmit = {sendEmail} className='form' >
+            <form  onSubmit = {sendEmail} className='form' >
                 <h1 >
-                    Enter your details
+                    {/* Enter your details */}
                 </h1>
                 <div className='form-inputs'>
                     <label className='form-label'>First Name*</label>
@@ -82,13 +89,12 @@ function Appointment() {
             <label className='form-label'>PREFERRED CONTACT TIME</label>
             <br />
             <select name="option">
-    <option value="0">Preferred contact time</option>
-    <option value="1">9am - 12noon</option>
-    <option value="2">12noon - 6pm</option>
-    <option value="3">6pm - 9pm</option>
-    <option value="3">9pm-2am</option>
-   
-  </select>
+                <option value="0">Preferred contact time</option>
+                <option value="1">9am - 12noon</option>
+                <option value="2">12noon - 6pm</option>
+                <option value="3">6pm - 9pm</option>
+                <option value="3">9pm-2am</option>
+            </select>
           
           </div>
           
@@ -104,6 +110,11 @@ function Appointment() {
           </Button>
             </form>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        {/* <Footer /> */}
         </div>
     )
 }

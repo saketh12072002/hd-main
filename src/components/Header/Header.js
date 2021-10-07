@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import './styles.scss'
-import {Link} from 'react-router-dom'
-// import logo from '../../assets/logo.png'
-import logo from './../../assets/New folder/logo.png'
+import {Link,useHistory} from 'react-router-dom'
+import logo from './../../assets/logopngedit.png'
 import name from './../../assets/New folder/name.png'
 import {signOutUserStart} from '../../redux/User/user.action'
 import  {useSelector,useDispatch} from 'react-redux'
@@ -14,11 +13,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-// import {selectWishlistItemsCount} from './../../redux/Wishlist/wishlist.selector'
-// import {selectWishlistItemsCount } from './../../redux/Wishlist/wishlist.selector'
-import Search from './../../components/Search/Search'
 import AdminToolbar from './../../components/AdminToolbar/AdminToolbar'
 import LocalMallIcon from '@material-ui/icons/LocalMall';
+import {AnimatedSocialIcon} from 'react-animated-social-icons'
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+
+
 
 const mapState = (state) => ({
     currentUser:state.user.currentUser,
@@ -33,12 +34,17 @@ function Header(props) {
     const {currentUser, totalNumCartItems} = useSelector(mapState)
     const [click,setClick] = useState(false)
     const [button, setButton] = useState(true);
-  
-
+    const [navbar, setNavbar] = useState(false);
+    const history = useHistory();
+    const [addcart, setAddcart] = useState(false);
  
 
     const handleClick= () => setClick(!click);
     const closeMobileMenu =() =>setClick(false);
+
+    const goToPreviousPath = () => {
+      history.goBack()
+  }
 
     const showButton = () => {
       if (window.innerWidth <= 960) {
@@ -48,12 +54,31 @@ function Header(props) {
       }
     };
 
-    
-
+    const changeBackground = () => {
+        if (window.scrollY >= 30) {
+          setNavbar(true);
+        }
+        else {
+          setNavbar(false)
+        }
+      }
+  
+      window.addEventListener('scroll', changeBackground);
 
     useEffect(() => {
       showButton();
     }, []);
+
+    const popcartfun =()=>{
+      setTimeout(() => {
+          setAddcart(true)
+        }, 2000);
+  }
+
+    useEffect(()=>{
+      setAddcart(true)
+      popcartfun();
+    },[totalNumCartItems])
   
     window.addEventListener('resize', showButton);
 
@@ -63,48 +88,152 @@ function Header(props) {
     };
 
     return (
-        <div className='header'>
+        <div className={navbar ? 'heeadertwo': 'heeader_active '}>
           <AdminToolbar />
+          <div className="logooo">
 
-                 
+              <div className="callToActions">
+              <ul>
+                <div className="signsign">
+                {currentUser && [
+                  <li key={1}>
+
+                    <Link to="/dashboard">
+                    account
+                    </Link>
+                  </li>,
+                  <li key={2}>
+                    <span onClick={() => signOut()}>
+                    Sign Out
+                    </span>
+                  </li>
+                ]}
+
+                {!currentUser && [
+                  <li key={1} className="hideOnMobile">
+                    <Link to="/registration">
+                      Register
+                    </Link>
+                  </li>,
+                  <li key={2}>
+                    <Link to="/login">
+                      Signin
+                      <i class="fas fa-user-circle"></i>
+                    </Link>
+                  </li>
+                ]}
+                </div>
+
+              </ul>
+                    </div>
+                    <div className="backicon" onClick={goToPreviousPath}><KeyboardBackspaceIcon /></div>
+
+              <div className="logo">
+                  <Link to="/">
+                    <img src={logo} alt="logo"/>  
                    
+                    
+                  </Link>
+              </div>
+
+              <div className="cartitems">
+                  <div className="searchicondesktop">
+                      {/* <SearchIcon /> */}
+                  </div>
+                  <div className="bookmark">
+                    <Link to ="/wishlist">
+                    <BookmarkBorderIcon />
+                    </Link>
+                      
+                  </div>
+                  <div className="cacart">
+                      <Link to="/cart">
+                      <LocalMallIcon />
+                      {totalNumCartItems}
+                      </Link>
+                  </div>
+                  {/* <div className={addcart?"addded":"adddedhide"}>product added to cart</div> */}
+              </div>
+
+              </div>
+
             
             <div className="wrap">
-            <div className="sidelogo">
-                 <Link to="/">
-                        <img src={logo} alt="logohd"/>
-                   </Link>
-                 </div>
                 <div className="logo">
-                 
-                   <div className="menu-icon" onClick={handleClick}>
-                      {click ?<CloseIcon />  : <MenuIcon />}                    
+                   {/* <Link to="/">
+                        <img src={logo} alt="logohd"/>
+                   </Link> */}
+                   <div className="menu-icon" onClick={handleClick}>                    
+                     {click ?<CloseIcon style={{color:"black"}}/>  : <MenuIcon />}                    
                    </div> 
+                   <div className="searchicon">
+                     {/* <SearchIcon /> */}
+                   </div>
                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                       <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                          Newarrivals
+                          Clothing
                         </Link>
                       </li>
                       <li className='nav-item'>
                         <Link to='/search' className='nav-links' onClick={closeMobileMenu}>
-                          Store
+                          Designers
+                        </Link>
+                      </li>
+                      <li className='nav-item'>
+                        <Link to='/search' className='nav-links' onClick={closeMobileMenu}>
+                          Collectioins
+                        </Link>
+                      </li>
+                      <li className='nav-item'>
+                        <Link to='/search' className='nav-links' onClick={closeMobileMenu}>
+                          Sale
+                        </Link>
+                      </li>
+                      <li className='nav-item'>
+                        <Link to='/search' className='nav-links' onClick={closeMobileMenu}>
+                          Men
                         </Link>
                       </li>
                       <li className='nav-item'>
                         <Link to='/cart' className='nav-links' onClick={closeMobileMenu}>
-                          Cart
+                          Kids
                         </Link>
                       </li>
                       <li className='nav-item'>
                         <Link to='/login' className='nav-links' >
-                          Login
+                          Women
                         </Link>
                       </li>
+                      
                       <li className='nav-item'>
-                        <Link to='/cart' className='nav-links' onClick={() => signOut()}>
-                          Logout
-                        </Link>
+                      {currentUser && [
+                            <li key={1}>
+                              <Link to="/dashboard">
+                              <AccountCircleIcon /> 
+                                <i class="fas fa-user-circle"></i>
+                              </Link>
+                            </li>,
+                            <li key={2}>
+                              <span onClick={() => signOut()}>
+                              Sign Out
+                              </span>
+                            </li>
+                          ]}
+
+                          {!currentUser && [
+                            <li key={1} className="hideOnMobile">
+                              <Link to="/registration">
+                                {/* Register */}
+                              </Link>
+                            </li>,
+                            <li key={2}>
+                              <Link to="/login">
+                                Signin
+                                <i class="fas fa-user-circle"></i>
+                              </Link>
+                            </li>
+                          ]}
                       </li>
                    </ul>
                 </div>
@@ -112,14 +241,171 @@ function Header(props) {
                 <nav >
                   <ul>
                   <li>
-                      <Link to="/">
+                      <Link to="/anvshn">
                         anvshn
                       </Link>
                     </li>
-                    <li>
-                      <Link to="/designers/Haberdasher">
-                        designers
+                    <li className="drop">
+                    
+                      <Link to="/">
+                        Designer
+                        <ArrowDropDownIcon />
                       </Link>
+                      <div className="sub-menu mega-menu mega-menu-column-4">
+                          <div className="list-item">
+                            <h4 className="title">
+                            <ul>
+                              <ul>
+                                <h3>Top Designers</h3>
+                                <li>
+                                    <Link to="/designer/The%20Haberdasher%20Co">
+                                      The Haberdasher
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/designer/108 Bespoke">
+                                      108 Bespoke
+                                    </Link>
+                                </li>
+                              </ul>
+                              <ul>
+                                <h3>Trending</h3>
+                                <li>
+                                    <Link to="/">
+                                      Tanya Batra
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Vineshya Vintage
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Anul Pyshak
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Keerthy Reddy
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Anil Kaushik
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Ashish Bandra
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Periya Sense
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      BruH Simpl
+                                    </Link>
+                                </li>
+                              </ul>
+                              <ul>
+                                <h3>Popular</h3>
+                                <li>
+                                    <Link to="/">
+                                      Pankaj Tiwari
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Jagan Reddy
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      CB Naidu
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Contemp Junta
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Sravya Sriram
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/search/dresstype/shirt">
+                                      Chadra Sets
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Leo Network
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                      Richa Panay
+                                    </Link>
+                                </li>
+                              </ul>
+                              <ul className="inheaderimage">
+                                <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
+                                <div className="desingner">Designer</div>
+                                <div className="shopnow">Shop Now</div>
+                              </ul>
+                              <ul className="inheaderimage">
+                                <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
+                                <div className="desingner">Designer</div>
+                                <div className="shopnow">Shop Now</div>
+                              </ul>
+                              {/* <li>
+                              <Link to="/">
+                                Bandhgala
+                                </Link>
+                                
+                              </li>
+                              <li>
+                              <Link to="/">
+                                Bandi
+                                </Link>
+                              </li>
+                              <li>
+                              <Link to="/">
+                                Shirts
+                                </Link>
+                              </li>
+                              <li>
+                              <Link to="/search/mens">
+                                Trousers
+                                </Link>
+                              </li>
+                              <li>
+                              <Link to="/">
+                                Indo-Western
+                                </Link>
+                              </li>
+                              <li>
+                              <Link to="/">
+                                Suits
+                                </Link>
+                              </li>
+                              <li>
+                              <Link to="/">
+                                Kurtas
+                                </Link>
+                              </li> */}
+                              
+                            </ul>
+                             
+                            </h4>
+                          </div>
+                      </div>
                     </li>
                     <li className="drop">
                     
@@ -186,49 +472,63 @@ function Header(props) {
                                       Shirts
                                     </Link>
                                 </li>
+                                
                               </ul>
+                              
                               <ul>
                                 <h3>Designers</h3>
                                 <li>
                                     <Link to="/">
-                                      Kurta Sets
+                                      Tanya Batra
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Kurtas
+                                      Vineshya Vintage
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Sherwani
+                                      Anul Pyshak
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Nehru Jacket & Sets
+                                      Keerthy Reddy
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Bandhgalas
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/search/dresstype/shirt">
-                                      Shirts
+                                      Anil Kaushik
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Bandhgalas
+                                      Ashish Bandra
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Shirts
+                                      Periya Sense
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link to="/">
+                                      BruH Simpl
+                                    </Link>
+                                </li>
+                              </ul>
+                             
+                              <ul className="inheaderimage">
+                                <img src="https://static3.azafashions.com/uploads/product_gallery/ppc-m-102_4-0768519001603533163.jpg "/>
+
+                                <div className="desingner">Designer</div>
+                                <div className="shopnow">Shop Now</div>
+                              </ul>
+                              <ul className="inheaderimage">
+                                <img src="https://static3.azafashions.com/uploads/product_gallery/ppc-m-102_4-0768519001603533163.jpg "/>
+                                <div className="desingner">Designer</div>
+                                <div className="shopnow">Shop Now</div>
                               </ul>
                               {/* <li>
                               <Link to="/">
@@ -344,45 +644,56 @@ function Header(props) {
                                 <h3>Designers</h3>
                                 <li>
                                     <Link to="/">
-                                      Kurta Sets
+                                      Tanya Batra
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Kurtas
+                                      Vineshya Vintage
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Sherwani
+                                      Anul Pyshak
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Nehru Jacket & Sets
+                                      Keerthy Reddy
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Bandhgalas
+                                      Anil Kaushik
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Shirts
+                                      Ashish Bandra
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Bandhgalas
+                                      Periya Sense
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      Shirts
+                                      BruH Simpl
                                     </Link>
                                 </li>
                               </ul>
+                              <ul className="inheaderimage">
+                                <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
+                                <div className="desingner">Designer</div>
+                                <div className="shopnow">Shop Now</div>
+                              </ul>
+                              <ul className="inheaderimage">
+                                <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
+                                <div className="desingner">Designer</div>
+                                <div className="shopnow">Shop Now</div>
+                              </ul>
+                              
                               {/* <li>
                               <Link to="/">
                                 Bandhgala
@@ -432,11 +743,11 @@ function Header(props) {
                     </li>
                     <li>
                       <Link to="/appointment">
-                        Appointment
+                        Appointment 
                       </Link>
                     </li>
                     <li>
-                      <Link to="/appointment">
+                      <Link to="/blogs">
                         blogs
                       </Link>
                     </li>
@@ -447,56 +758,7 @@ function Header(props) {
                     </li> */}
                   </ul>
                 </nav>
-                <div className="callToActions">
-              <ul>
-                <li>
-                  <Link to="/cart">
-                  <LocalMallIcon /> {totalNumCartItems}
-                  </Link>
-                </li>
-                <li>
-                  {/* <Link to="/wishlist">
-                    Your Wishlist ( {totalNumWishlistItems} )
-                    <i class="fas fa-shopping-basket"></i>
-                  </Link> */}
-                </li>
 
-                {currentUser && [
-                  <li key={1}>
-                    <Link to="/dashboard">
-                    {/* <AccountCircleIcon />  */}
-                      {/* <i class="fas fa-user-circle"></i> */}
-                    </Link>
-                  </li>,
-                  <li key={2}>
-                    <span onClick={() => signOut()}>
-                    {/* <ExitToAppIcon /> */}
-                    </span>
-                  </li>
-                ]}
-
-                {!currentUser && [
-                  <li key={1} className="hideOnMobile">
-                    <Link to="/registration">
-                      {/* Register */}
-                    </Link>
-                  </li>,
-                  <li key={2}>
-                    <Link to="/login">
-                      Signin
-                      <i class="fas fa-user-circle"></i>
-                    </Link>
-                  </li>
-                ]}
-
-                {/* <li className="mobileMenu">
-                  <span onClick={() => setActiveMenu(!activeMenu)}>
-                    <i className="fas fa-bars"></i>
-                  </span>
-                </li> */}
-
-              </ul>
-                    </div>
             
                 </div>
         </div>

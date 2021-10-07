@@ -7,11 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import {store, persistor} from './redux/createStore';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
+import Scrolltotop from './Scrolltotop'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+      <Scrolltotop />
         <PersistGate persistor={persistor}>
           <App /> 
         </PersistGate>

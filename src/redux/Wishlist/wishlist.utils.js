@@ -13,7 +13,6 @@ export const handleAddToWishlist = ({
     nextWishlistItem
 }) => {
 
-    
     const wishlistItemExists = existingWishlistitems({prevWishlistItems,nextWishlistItem})
 
     if(wishlistItemExists) {

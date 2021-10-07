@@ -1,0 +1,153 @@
+.blogssection{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+
+        .blogfullpage {
+            // width: 50rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            img{    
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                background-size: 100%;
+                transition: 0.4s ease-in-out;
+
+                &:hover{
+                    transform: scale(1.01);
+                }
+            }
+            .date {
+                font-size: 0.7rem;
+                margin:2rem;
+            }
+
+            .blogtitlesection {
+                font-size: 4rem;
+                font-weight: 400;
+                margin-top: 0;
+                margin: 0rem 2rem 2rem 2rem; 
+            }
+
+            .blogsubtitlesection {
+                font-size: 1.4rem;
+                margin: 0rem 2rem 3rem 2rem; 
+                font-weight: 400;
+            }
+
+            .blogimage1 {
+                width: 80%;
+            }
+
+            .blogrecommend{
+                margin-top: 4rem;
+            }
+
+            .para {
+                font-size: 1.3rem;
+                width: 60%;
+                margin: 4rem;
+                line-height: 2.6rem;
+                font-weight: 400;
+            }
+            .para2{
+                font-size: 1.3rem;
+                width: 60%;
+                margin: 4rem;
+                line-height: 2.6rem;
+                font-weight: 400;
+            }
+
+            .blogheaderimage {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .imagesection {
+                width: 80%;
+                display: inline-grid;
+                justify-content: center;
+                grid: center;
+                grid-gap: 1rem;
+                // margin-left: 50%;
+                grid-template-columns: 50% 50% ;
+            }
+        }
+
+        .line{
+            width: 80%;
+            height: 1px;
+            background-color: rgb(192, 192, 192);
+            margin-bottom: 4rem;
+        }
+
+        .shopthestory{
+            width: 100%;
+            height: 100%    ;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .shopby {
+                font-size: 1rem;
+                font-weight: 500;
+                text-transform: uppercase;
+                margin-bottom: 5rem;
+            }
+
+            .slider {
+                // margin-top: 35rem;
+                width: 80%;
+                height: 60rem;
+                // margin-left:3.5rem;
+                background: rgb(255, 255, 255);
+                // padding-bottom: 1rem;
+                margin-bottom: 5rem;
+                margin-left: 4rem;
+                
+          
+                .simliar {
+          
+                  font-size: 2rem;
+                  text-transform: capitalize;
+                  // text-align: center;
+                  font-weight: 100;
+                  color:var(--blue);
+                  margin-bottom: 0.5rem;
+                  // background-color: var(--blue);
+                  padding: 1rem;
+                }
+                .slick-list{
+                  // background: chocolate;
+                  width: 100%;
+                  height: 100%;
+                 
+              }
+              .slick-prev{
+                  color: rgb(255, 255, 255);
+                  
+              }
+
+              .slick-next:before{
+                  margin-left: -9rem;
+              }
+              .slick-prev:before {
+                  margin-left: -2rem;
+              }
+              .slick-prev:before, .slick-next:before{
+                  color: rgb(70, 70, 70);
+              }
+              }
+            }
+        
+}

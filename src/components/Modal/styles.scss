@@ -7,8 +7,9 @@
     background: rgba(0, 0, 0, 0.2); 
     backdrop-filter: blur(4px);
 
-    margin-top: 5rem;
+    margin-top: 2rem;
     z-index: 1;
+    
  
   }
   
@@ -19,11 +20,30 @@
     height: 100%;
     pointer-events: none;
     z-index: 100;
+    ::-webkit-scrollbar{
+      // background-color: royalblue;
+      width: 0.4rem;
+
+    }
+
+    .gap{
+      height: 2rem;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+     
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--gold);
+      outline: 1px solid rgb(95, 95, 95);
+      height: 1rem;
+    }
   
   
     .modal {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 58%; left: 50%;
       -webkit-transform: translate(-50%, -50%);
       -moz-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
@@ -31,13 +51,14 @@
       width: 100rem;
       padding-left: 2rem;
       padding-right: 2rem;
-      padding-top: 2rem;
+      // padding-top: 2rem;
       padding-bottom: 20rem;
       height: auto;
       min-height: 40.0rem;
       pointer-events: all;
       max-height: 95vh;
       overflow: auto;
+      
       
       .MuiSvgIcon-root{
         position: absolute;
@@ -51,3 +72,21 @@
     }
   }
 
+  @media only screen and (max-width: 480px) {
+    .modalWrap{
+      .modal{
+        top: 58%;
+        width: 100%;
+        // background-color: black;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 380px) {
+    .modalWrap{
+      .modal{
+        width: 100%;
+        // background-color: black;
+      }
+    }
+  }

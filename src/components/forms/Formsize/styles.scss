@@ -1,0 +1,93 @@
+$color1: #f4f4f4;
+$color2: #3197EE;
+.formRowradiosize {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+
+    .formSelectsize{
+        width: 50%;
+        // background-color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .List__numbers {
+        width: 20%;
+        margin:0 -3px;
+        display:flex;
+        // flex-wrap:wrap;
+        flex-direction: direction;
+        
+        .Property__Field{
+            display: flex;
+            flex-direction: row;
+            // width:calc(33.33% - 6px);   
+            // margin:0 3px 6px;
+            // background-color: black;
+        }
+.Property__Field input{width:auto;background-color:initial;cursor:default;appearance:radio;box-sizing:border-box;margin:3px 3px 0 5px;padding:initial;border:initial;position:absolute;visibility:hidden}
+.Property__Field label{font-size:15px;line-height:1.6;letter-spacing:normal;color:rgba(35,31,32,.8);border:solid 1px #ccc;border-radius:35px;margin:0;padding:8px;text-align:center;text-transform:none;cursor:pointer;display:block}
+.Property__Field input:checked~label{
+    background-color:#231f20;
+    color:#fff;
+    border-color:#231f20
+}
+.Property__Field input:unchecked~label{
+    background-color:#acacac;
+    color:#fff;
+    border-color:#ffffff
+}
+    }
+    
+    
+  
+    label {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  
+    select {
+      font-family: 'Ropa Sans';
+      display: block;
+      width: 100%;
+      float: left;
+      font-size: 1.4rem;
+      // line-height: 1;
+      font-weight: 400;
+      text-align: left;
+      padding: 5px 0px;
+      // margin: 10px auto;
+      border: none;
+      top: 0;
+      left: 0;
+      transform: translate(0%, 0%);
+      position: inherit;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 3rem;
+      outline: none;
+      cursor: pointer;
+      background: var(--white);
+      
+      
+      
+
+      
+
+      option {
+        letter-spacing: 2rem;
+        font-size: 1rem;
+        padding-bottom: 2rem;
+        font-weight:100;
+        letter-spacing: 2rem;
+
+      }
+      
+    }
+
+    
+   
+  }

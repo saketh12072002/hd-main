@@ -1,0 +1,22 @@
+.paymentlayout{
+    height: 100%;
+    .verifiedfooter{
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        height: 5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border-top: 1px solid rgb(207, 207, 207);
+        
+        .cardimages{
+            padding-top: 0.3rem;
+            margin-right: 2rem;
+            img{
+                width: 7rem;
+                // height: 3rem;
+                object-fit: contain;
+            }
+        }
+    }
+}

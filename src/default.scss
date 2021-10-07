@@ -6,7 +6,9 @@
   --black: rgb(31, 31, 31);
   --gray:rgb(209, 209, 209);
   --darkgray:rgb(22, 22, 22);
+  --lytdark:rgb(24, 24, 24);
   --gold:rgb(167, 96, 9);
+  --lightgold:rgb(255, 249, 242);
   --darkgold:rgb(59, 20, 27);
   --green:rgb(2, 24, 2);
   --yellow:rgba(255,219,56,255);
@@ -16,6 +18,8 @@
 
 html {
   font-size: 10px;
+  // text-transform: uppercase;
+  // font-weight: 300;
 }
 
 html,
@@ -45,14 +49,23 @@ body {
   // font-family: 'Jost', sans-serif;
   // font-family: 'Barlow Semi Condensed', sans-serif;
   // font-family: 'Open Sans Condensed', sans-serif;
-  font-family: 'Montserrat', sans-serif;
+  // font-family: 'Montserrat', sans-serif;
+  // font-family: 'Playfair Display', serif;
   // font-family: 'Nunito Sans', sans-serif;
   // font-family: 'Josefin Slab', serif;
+  // font-family: 'Rajdhani', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 1.8rem;
-  font-weight: 500;
+  // font-weight: 100;
   line-height: 1;
+
   
 }
+
+a{
+  color: black;
+}
+
 
 h1 {
   display: block;
@@ -88,16 +101,18 @@ a {
 }
 
 a, a:hover {
-  -webkit-transition: all .4s ease-in-out;
-  -moz-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  // -webkit-transition: all .4s ease-in-out;
+  // -moz-transition: all .4s ease-in-out;
+  // transition: all .4s ease-in-out;
   
 }
 
 .main {
   width: 100%;
-  height: calc(100% - 6.5rem);
-  max-width: 1450px;
+  // height: calc(100% - 6.5rem);
+  // max-width: 1450px;
+  width: auto;
+  height: auto;
   padding: 0 0px;
   margin: 0 ;
 }
@@ -125,11 +140,37 @@ a, a:hover {
 }
 
 .adminLayout {
+  margin-top: 13rem;
   height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
 }
 
+.footerlayout{
+  width: 100%;
+  
+
+  height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
+  .footercontent{
+    margin-top: 9rem;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 100%;
+    margin-left: 5%;
+      .sidefooter{
+        width: 20%;
+
+      }
+      .sidefootersections{
+        width: 80%;
+        
+
+      }
+  }
+}
+
 .dashboardLayout {
-  height: calc(100% - 6.5rem - 5.8rem);
+  // height: calc(100% - 6.5rem - 5.8rem);  
+  margin-top: 10rem;
 }
 
 @media only screen and (max-width: 980px) {
@@ -145,6 +186,32 @@ a, a:hover {
       width: 100%;
       border: none;
       margin-bottom: 2.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .footerlayout{
+    width: 100%;
+
+    
+    .footercontent{
+      
+      width: 100%;
+      margin-left: 0;
+      
+
+    .sidefooter{
+      visibility: hidden;
+      display: none;
+    }
+      .sidefootersections{
+        margin-top: 5%;
+        width: 100%;
+        margin-bottom: 10rem;
+        
+
+      }
     }
   }
 }

@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import './shttyles.scss'
 import {Link} from 'react-router-dom'
 // import logo from '../../assets/logo.png'
-import logo from './../../assets/New folder/logo.png'
+import logo from './../../assets/logopngedit.png'
 import name from './../../assets/New folder/name.png'
 import {signOutUserStart} from '../../redux/User/user.action'
 import  {useSelector,useDispatch} from 'react-redux'
@@ -17,6 +17,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import AdminToolbar from './../../components/AdminToolbar/AdminToolbar'
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import {AnimatedSocialIcon} from 'react-animated-social-icons'
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+
 
 const mapState = (state) => ({
     currentUser:state.user.currentUser,
@@ -32,10 +34,16 @@ function Header(props) {
     const [click,setClick] = useState(false)
     const [button, setButton] = useState(true);
     const [navbar, setNavbar] = useState(false);
- 
+    const [closedrop, setClosedrop] = useState(false)
+    const [closedrop1, setClosedrop1] = useState(false)
+    const [closedrop2, setClosedrop2] = useState(false)
+    const [closedrop3, setClosedrop3] = useState(false)
+    const [closedrop4, setClosedrop4] = useState(false)
+    const [closedrop5, setClosedrop5] = useState(false)
 
     const handleClick= () => setClick(!click);
     const closeMobileMenu =() =>setClick(false);
+    
 
     const showButton = () => {
       if (window.innerWidth <= 960) {
@@ -71,43 +79,17 @@ function Header(props) {
         <div className={navbar ? 'header_active': 'headertwo'}>
           <AdminToolbar />
             <div className="logooo">
-              <div className="search">
-                 {/* <Search /> */}
-              </div>
-              
-              <div className="logo">
-                  <Link to="/">
-                    <img src={name} alt="name"/>  
-                  </Link>
-                </div>
 
-                <div className="callToActions">
+              <div className="callToActions">
               <ul>
-                <li>
-                  <Link to="/cart">
-                  <LocalMallIcon />
-                  {totalNumCartItems}
-                  </Link>
-                </li>
-                <li>
-                         
-                  <AnimatedSocialIcon
-                  brandName="instagram"
-                  url=""
-                  animation="bounce"
-                  defaultColor="#D1D1D1"
-                  hoverColor="color"
-                  width="1em"
-                  animationDuration={0.8}
-                  style={{padding: '0'}}
-                  />
-                </li>
-
+                <div className="signsign">
                 {currentUser && [
                   <li key={1}>
+
                     <Link to="/dashboard">
-                    <AccountCircleIcon /> 
-                      <i class="fas fa-user-circle"></i>
+                    {/* <AccountCircleIcon />
+                     */}
+                       account
                     </Link>
                   </li>,
                   <li key={2}>
@@ -130,15 +112,32 @@ function Header(props) {
                     </Link>
                   </li>
                 ]}
-
-                {/* <li className="mobileMenu">
-                  <span onClick={() => setActiveMenu(!activeMenu)}>
-                    <i className="fas fa-bars"></i>
-                  </span>
-                </li> */}
+                </div>
 
               </ul>
                     </div>
+
+              <div className="logo">
+                  <Link to="/">
+                    <img src={logo} alt="logo"/>  
+                    
+                  </Link>
+              </div>
+
+              <div className="cartitems">
+                  <div className="searchicondesktop">
+                      <SearchIcon />
+                   </div>
+                   <div className="bookmark">
+                      <BookmarkBorderIcon />
+                   </div>
+                   <div className="cacart">
+                      <Link to="/cart">
+                      <LocalMallIcon />
+                      {totalNumCartItems}
+                      </Link>
+                   </div>
+              </div>
 
             </div>
             <div className="wrap">
@@ -146,34 +145,437 @@ function Header(props) {
                    {/* <Link to="/">
                         <img src={logo} alt="logohd"/>
                    </Link> */}
-                   <div className="menu-icon" onClick={handleClick}>
-                      {click ?<CloseIcon />  : <MenuIcon />}                    
-                   </div> 
-                   <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                   <div className="menu-icon-backgrou">  
+                        <div className="menu-icon" onClick={handleClick}>    
+                          <div className="menu-icon-back">
+                                {click ?<CloseIcon style={{color:"black"}}/>  : <MenuIcon />}    
+                          </div>                              
+                        </div> 
+
+                   </div>
+                   
+                   <ul className={click ? 'nav-menu-active' : 'nav-menu'}>
+                   <li className="nav-item-top">
+
+                   </li>
+                  
                       <li className='nav-item'>
-                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                          Newarrivals
-                        </Link>
+                      
+                        <div className="nav-item-header"  onClick={()=>{setClosedrop(!closedrop)}}>
+                          <div className="section-header">New</div>
+                          <div className={closedrop? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop(!closedrop)}}><ArrowDropDownIcon /></div>
+                        </div>
+                     
+                        <div className={closedrop? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
+
                       </li>
                       <li className='nav-item'>
-                        <Link to='/search' className='nav-links' onClick={closeMobileMenu}>
-                          Store
-                        </Link>
+                        <div className="nav-item-header"  onClick={()=>{setClosedrop1(!closedrop1)}}>
+                          <div className="section-header">Desingners</div>
+                          <div className={closedrop1? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop1(!closedrop1)}}><ArrowDropDownIcon /></div>
+                        </div>
+                     
+                        <div className={closedrop1? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                  <Link to="/designer/The%20Haberdasher%20Co">
+                                      The Haberdasher
+                                    </Link>
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
                       </li>
                       <li className='nav-item'>
-                        <Link to='/cart' className='nav-links' onClick={closeMobileMenu}>
-                          Cart
-                        </Link>
+                      <div className="nav-item-header"  onClick={()=>{setClosedrop2(!closedrop2)}}>
+                          <div className="section-header">Men</div>
+                           <div className={closedrop2? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop2(!closedrop2)}}><ArrowDropDownIcon /></div>                        </div>
+                     
+                        <div className={closedrop2? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                              <Link to="/search/mens">
+                                <div className="">
+                                      mens
+                                  </div>
+                                  </Link>
+
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                                 
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
                       </li>
                       <li className='nav-item'>
-                        <Link to='/login' className='nav-links' >
-                          Login
-                        </Link>
+                      <div className="nav-item-header"  onClick={()=>{setClosedrop3(!closedrop3)}}>
+                          <div className="section-header">Women</div>
+                           <div className={closedrop3? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop3(!closedrop3)}}><ArrowDropDownIcon /></div>                        </div>
+                     
+                        <div className={closedrop3? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
                       </li>
                       <li className='nav-item'>
-                        <Link to='/cart' className='nav-links' onClick={() => signOut()}>
-                          Logout
-                        </Link>
+                      <div className="nav-item-header"  onClick={()=>{setClosedrop4(!closedrop4)}}>
+                          <div className="section-header">Wedding</div>
+                           <div className={closedrop4? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop4(!closedrop4)}}><ArrowDropDownIcon /></div>                        </div>
+                     
+                        <div className={closedrop4? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
+                      </li>
+                      <li className='nav-item'>
+                      <div className="nav-item-header"  onClick={()=>{setClosedrop5(!closedrop5)}}>
+                          <div className="section-header">Accessories</div>
+                           <div className={closedrop? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop(!closedrop)}}><ArrowDropDownIcon /></div>                        </div>
+                     
+                        <div className={closedrop5? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
+                      </li>
+                      <li className='nav-item'>
+                      <div className="nav-item-header"  onClick={()=>{setClosedrop5(!closedrop5)}}>
+                          <div className="section-header">Jewellery</div>
+                           <div className={closedrop? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop(!closedrop)}}><ArrowDropDownIcon /></div>                        </div>
+                     
+                        <div className={closedrop5? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                   <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
+                      </li>
+                      <li className='nav-item'>
+                      <div className="nav-item-header"  onClick={()=>{setClosedrop5(!closedrop5)}}>
+                          <div className="section-header">Kids</div>
+                           <div className={closedrop? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop(!closedrop)}}><ArrowDropDownIcon /></div>                        </div>
+                     
+                        <div className={closedrop5? "sub-section":"sub-section-hide"}>
+                              <div className="sub-section-item">
+                                  shirts
+                              </div>
+                              <div className="sub-section-item">
+                                  shirts
+                              </div>
+                              <div className="sub-section-item">
+                                  shirts
+                              </div>
+                              <div className="sub-section-item">
+                                  shirts
+                              </div>
+                        </div>
+                      </li>
+                      <li className='nav-item'>
+                      <div className="nav-item-header"  onClick={()=>{setClosedrop5(!closedrop5)}}>
+                          <div className="section-header">Home</div>
+                           <div className={closedrop5? "section-dropdown":"section-dropdownro"} onClick={()=>{setClosedrop5(!closedrop5)}}><ArrowDropDownIcon /></div>                        </div>
+                     
+                        <div className={closedrop5? "sub-section":"sub-section-hide"}>
+                          
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                              <div className="sub-section-item">
+                                  <div className="">
+                                      Shirt
+                                  </div>
+                                  <div className="">
+         
+                                    <ArrowDropDownIcon />
+                                  </div>
+                              </div>
+                        </div>
+                      </li>
+                      
+                      <li className='nav-item'>
+                        <div className="signinitem">
+                        {currentUser && [
+                            <li key={1}>
+                              <div className="aacount">
+                              <Link to="/dashboard">
+                                  account
+                                </Link>
+                              </div>
+                             
+                            </li>,
+                            <li key={2}>
+                              <span onClick={() => signOut()}>
+                              Sign Out
+                              </span>
+                            </li>
+                          ]}
+                        </div>
+                      
+
+                          {!currentUser && [
+                            <li key={1} className="hideOnMobile">
+                              <Link to="/registration">
+                                Registeras
+                              </Link>
+                            </li>,
+                            <li key={2}>
+                              <Link to="/login">
+                                Signin
+                               
+                              </Link>
+                            </li>
+                          ]}
                       </li>
                    </ul>
                 </div>
@@ -181,14 +583,14 @@ function Header(props) {
                 <nav >
                   <ul>
                   <li>
-                      <Link to="/collabration">
+                      <Link to="/anvshn">
                         anvshn
                       </Link>
                     </li>
                     <li className="drop">
                     
-                      <Link to="/">
-                        Desinger
+                      <Link to="/designerdetails">
+                        Designer
                         <ArrowDropDownIcon />
                       </Link>
                       <div className="sub-menu mega-menu mega-menu-column-4">
@@ -196,15 +598,15 @@ function Header(props) {
                             <h4 className="title">
                             <ul>
                               <ul>
-                                <h3>Top Desingers</h3>
+                                <h3>Top Designers</h3>
                                 <li>
-                                    <Link to="/designer/Haberdasher">
+                                    <Link to="/designer/The%20Haberdasher%20Co">
                                       The Haberdasher
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/">
-                                      108
+                                      Garvili
                                     </Link>
                                 </li>
                               </ul>
@@ -296,12 +698,12 @@ function Header(props) {
                               </ul>
                               <ul className="inheaderimage">
                                 <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
-                                <div className="desingner">Desinger</div>
+                                <div className="desingner">Designer</div>
                                 <div className="shopnow">Shop Now</div>
                               </ul>
                               <ul className="inheaderimage">
                                 <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
-                                <div className="desingner">Desinger</div>
+                                <div className="desingner">Designer</div>
                                 <div className="shopnow">Shop Now</div>
                               </ul>
                               {/* <li>
@@ -462,12 +864,12 @@ function Header(props) {
                               <ul className="inheaderimage">
                                 <img src="https://static3.azafashions.com/uploads/product_gallery/ppc-m-102_4-0768519001603533163.jpg "/>
 
-                                <div className="desingner">Desinger</div>
+                                <div className="desingner">Designer</div>
                                 <div className="shopnow">Shop Now</div>
                               </ul>
                               <ul className="inheaderimage">
                                 <img src="https://static3.azafashions.com/uploads/product_gallery/ppc-m-102_4-0768519001603533163.jpg "/>
-                                <div className="desingner">Desinger</div>
+                                <div className="desingner">Designer</div>
                                 <div className="shopnow">Shop Now</div>
                               </ul>
                               {/* <li>
@@ -625,12 +1027,12 @@ function Header(props) {
                               </ul>
                               <ul className="inheaderimage">
                                 <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
-                                <div className="desingner">Desingner</div>
+                                <div className="desingner">Designer</div>
                                 <div className="shopnow">Shop Now</div>
                               </ul>
                               <ul className="inheaderimage">
                                 <img src="https://static3.azafashions.com/tr:w-234/uploads/product_gallery/16_2104_sg_4-0905397001618995289.jpg "/>
-                                <div className="desingner">Desingner</div>
+                                <div className="desingner">Designer</div>
                                 <div className="shopnow">Shop Now</div>
                               </ul>
                               
@@ -687,7 +1089,7 @@ function Header(props) {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/appointment">
+                      <Link to="/blogs">
                         blogs
                       </Link>
                     </li>

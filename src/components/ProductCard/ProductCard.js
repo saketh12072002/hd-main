@@ -5,9 +5,7 @@ import {fetchProductStart,setProduct, setProducts} from './../../redux/Products/
 import Button from './../../components/forms/Button/Button'
 import './styles.scss'
 import {addProduct} from './../../redux/Cart/cart.actions'
-import { handleAddToCart } from '../../redux/Cart/cart.utils'
-import { addProducttoWishlist } from '../../redux/Wishlist/wishlist.actions'
-import { handleUserProfile } from '../../firebase/utils'
+import {addProducttoWishlist} from './../../redux/Wishlist/wishlist.actions'
 import "react-alice-carousel/lib/alice-carousel.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -20,14 +18,18 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FormSelect from './../../components/forms/FormSelect/FormSelect'
 import Modal from './../Modal/Modal'
 import FormInput from './../forms/FormInput/Forminput'
 import menme from './../../assets/MENMEASUREMENT.png'
 import womenme from './../../assets/WOMENMEASUREMENT.png'
-import SliderImage from 'react-zoom-slider';
-
-
+import InnerImageZoom from 'react-inner-image-zoom';
+import Reviews from './Reviews/Reviews'
+import {motion} from 'framer-motion'
+import LabelImportantIcon from '@material-ui/icons/LabelImportant';
+import Simslider1 from './Simslider1/Simslider1'
+import Simslider3 from './Simslider3/Simslider3'
+import Simslider2 from './Simslider2/Simslider2'
+import BookmarkIcon from '@material-ui/icons/Bookmark';
 
 const mapState = state => ({
     product:state.productsData.product
@@ -40,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'rgba(0, 0, 0, 0)'
     },
     heading: {
-      fontSize: theme.typography.pxToRem(20),
+      fontSize: theme.typography.pxToRem(24),
       fontWeight: theme.typography.fontWeightRegular,
       
     }
@@ -50,10 +52,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 function ProductCard() {
-    const dispatch = useDispatch();
+      const dispatch = useDispatch();
     const history = useHistory();
-    const {product} = useSelector(mapState);
     const {productID} = useParams();
+    const {product} = useSelector(mapState);
     const [size,setSize] = useState('')
     const [filterType,setFilterType] = useState('')
     const [hideModal, setHideModal] = useState(true);
@@ -101,14 +103,91 @@ function ProductCard() {
     const [lengthofoutfit, setLengthofoutfit] = useState();
     const [frontcrotch, setFrontcrotch] = useState();
     const [backcrotch, setBackcrotch] = useState();
-  
+    const [popcart, setPopcart] =useState(false)
+    const [selectedproductSize,setSelectedproductSize]=useState('')
+    const [error, setError] = useState('')
 
 
+
+
+    const { productCategory,
+            productName,
+            productThumbnail,
+            productThumbnail1,
+            productThumbnail2,
+            productThumbnail3,
+            productPrice,
+            discountproductPrice,
+            productDesc,
+            productSize,
+            brandName,
+            similiarProduct1id,
+            similiarProduct1Name,
+            similiarProduct1Price,
+            similiarProduct1image,
+            similiarProduct2id,
+            similiarProduct2Name,
+            similiarProduct2Price,
+            similiarProduct2image,
+            similiarProduct3id,
+            similiarProduct3Name,
+            similiarProduct3Price,
+            similiarProduct3image,
+            similiarProduct4id,
+            similiarProduct4Name,
+            similiarProduct4Price,
+            similiarProduct4image} = product;
+
+    const [selimg, setSelimg] = useState(productThumbnail)
+
+    const similiar1 = {similiarProduct1Name,similiarProduct1id,similiarProduct1image,similiarProduct1Price}
+    const similiar2 ={similiarProduct2id,
+            similiarProduct2Name,
+            similiarProduct2Price,
+            similiarProduct2image}
+    const similiar3 ={similiarProduct3id,
+                similiarProduct3Name,
+                similiarProduct3Price,
+                similiarProduct3image}
+    const similiar4 ={similiarProduct4id,
+                    similiarProduct4Name,
+                    similiarProduct4Price,
+                    similiarProduct4image}
+
+    const reviews = [{
+        rating:'5',
+        text:'Problem in size ... Loose as compared to size on chart Its too transparent ..... Though material is soft yet not the quality expected fm W',
+        name:'sheetal',
+        date:'15 2019'
+    },{
+        rating:'3',
+        text:'Simple, elegant but so beautiful. Love the texture of this kurti . Same as image. Love you haberdasher ,your each and every delivery makes me so happy ❤❤❤❤❤',
+        name:'Sharath',
+        date:'12 2020'
+    },{
+        rating:'3',
+        text:'Simple, elegant but so beautiful. Love the texture of this kurti . Same as image. Love you haberdasher ,your each and every ',
+        name:'Sharath',
+        date:'12 2020'
+    },{
+        rating:'3',
+        text:'Simple, elegant but so beautiful. Love the texture of this kurti . Same as image. Love you haberdasher ,your each and every delivery makes me so happy',
+        name:'Sharath',
+        date:'12 2020'
+    },{
+        rating:'5',
+        text:'Problem in size ... Loose as compared to size on chart Its too transparent ..... Though material is soft yet not the quality expected fm W',
+        name:'sheetal',
+        date:'15 2019'
+    },{
+        rating:'3',
+        text:'Simple, elegant but so beautiful. Love the texture of this kurti . Same as image. Love you haberdasher ,your each and every delivery makes me so happy ❤❤❤❤❤',
+        name:'Sharath',
+        date:'12 2020'
+    }]
     
     
-    
-    const { productCategory,productName,productThumbnail,productThumbnail1,productThumbnail2,productThumbnail3,productPrice,productDesc,productSize,brandName,similiarProduct1Name,
-            similiarProduct1Price,similiarProduct1image} = product;
+   
 
             const data = [
                 {
@@ -125,18 +204,38 @@ function ProductCard() {
                 },
               ];
    
-    const [temp, setTemp] = ('adadasd')
-    const add =({...product,backcrotch,frontcrotch,lengthofoutfit,lowerwaist,inseam,waistofloorlength,bottomlength,waist,
+ 
+    const productPlus =({backcrotch,frontcrotch,lengthofoutfit,lowerwaist,inseam,waistofloorlength,bottomlength,waist,
                     underbust,upperbust,bust,wrist,shouldertoapex,backneckdepth,frontneckdepth,scale,message,ankle,
                     calf,knee,thigh,crotch,inseemlength,skirtlength,hip,trouserlength,elbow,sherwanilength,kurtalength,
                     sleeveround,bicep,sleevelength,armhole,trouserwaist,stomach,chest,acrossback,acrossfront,shoulder,
-                    neckround,height,email,userName })
+                    neckround,height,email,userName,selectedproductSize })
+
+    
+    
+    
+   
 
     const classes = useStyles();
+        
   
+        useEffect(()=>{
+            if(productThumbnail!== 'undefined'){
+                setSelimg(productThumbnail)
+            }
+            
+         
+        },[productThumbnail])
 
+        const popcartfun =()=>{
+            setTimeout(() => {
+                setPopcart(false)
+              }, 2000);
+        }
+    
 
     useEffect( ()=>{
+       
         dispatch(
              fetchProductStart(productID)
         )
@@ -146,7 +245,7 @@ function ProductCard() {
                  setProduct({})
             )
         }
-    },[])
+    },[productID])
 
     const toggleModal = () => {
         setHideModal(!hideModal)
@@ -171,24 +270,28 @@ function ProductCard() {
 
    
 
-    var settings = {
+    var  settings = {
         // dots: true,
         arrow:true,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 2,
         adaptiveHeight: true,
         
         responsive: [{
+            breakpoint: 1500,
+            settings: {
+                slidesToShow: 5
+            }
+        },{
             breakpoint: 1024,
             settings: {
                 slidesToShow: 2
             }
         }, {
-            breakpoint: 650,
+            breakpoint: 480,
             settings: {
-                initialSlide: 2,
                 slidesToShow: 2
             }
         }]
@@ -197,17 +300,26 @@ function ProductCard() {
     const configAddToCartBtn= {
         type:'button'
     }
-    
-
-    const handleAddToCart = (add) => {
-        if (!add) return;
-        dispatch(
-             addProduct(add)
-        );
+  
+    const handleAddToCart = (product) => {
+        
+        const add = {...product, ...productPlus}
+        if(selectedproductSize !="")
+        {
+            setPopcart(true)
+            popcartfun();
+            dispatch(
+                addProduct(add)
+           );
+        }
+        else {
+            setError('Please select size')
+        }
+        
 
         resetForm();
         
-        history.push('/cart')
+        // history.push('/cart')
     }   
 
    
@@ -217,7 +329,6 @@ function ProductCard() {
         dispatch(
             addProducttoWishlist(product)
         );
-        history.push('/wishlist')
     } 
 
 
@@ -229,14 +340,10 @@ function ProductCard() {
         setScale(e.target.value)  
       };
     
-  
 
     const configFilters = {
         defaultValue: size,
         options: [{
-          name: 'Select a Size',
-          value: ''
-        }, {
           name: 'S',
           value: 'S'
         }, {
@@ -271,94 +378,135 @@ function ProductCard() {
         }], 
         handleChange: handleScale
       };
-  
       
 
     return (
-        <div className="productCard">
-            
-            <div className="productCCard">
-
-            <div className="hero">
-                <SliderImage 
-                    data={data} 
-                    width="500px" 
-                    showDescription={true} 
-                    direction="right" 
-                    />
-            </div>
-            
-
-            <div className="productDetails">
-                <ul>
-                    
-                    <li>
-                        <h1>
-                            
-                           {productName}
-                        </h1>       
-                    </li>
-
-                    <li>
-                        <div className="productType">
-                             Checked cotton-blend shirt
-                        </div>
-                    </li>
-
-                    <li>
-                        <div className="price">
-                        ₹ {productPrice}
-                        
-
-                        </div>
-                        {productNname}
-                    </li>
-
-                    <li>
-
-                        <div className="colorSize">
-                            <div className="">
-                                Color: Light blue
-                            </div>
-                            <div className="viewsize">
-                                View size guide     
-                            </div>
-                        </div>
-                        
-                    </li>
-
-                    <li>
-                        <div className="">
-                        <FormSelect className="firstformprocard" {...configFilters} />  
-                        </div>
-                    </li>
-                    <li>
-                        <div className="productdesscription">
-                        <h4>Description:</h4>
-                        <br />
-                        Grey sherwani with cross stitch embroidered motifs & mandarin collar.<br />
-                        Component: 1<br />
-                        Embroidered<br />
-                        Neckline: Mandarin<br />
-                        Sleeve Length: Full<br />
-                        Fabric: Raw Silk<br />
-                        Color: Grey<br />
-                        Closure: Concealed buttons<br />
-                        Note: Inner kurta & pant worn by the model is not for sale<br />
-                        
-                        </div>
-                    </li>
-                    
-                    <li>
-                    <div className="callToActions">
-                          <ul>
-                        <li>
-                            <Button className="procardButton1" onClick={() => toggleModal()}>
-                                Customise your product
-                            </Button>
-                        </li>
-                        </ul>
+        <div className="productcard">
+            <div className="productsection">
+                <div className="imagesection">
+                    <div className="indimage">
+                        <img src={productThumbnail} onClick={()=>setSelimg(productThumbnail)} />
                     </div>
+                    <div className="indimage">
+                        <img src={productThumbnail1} onClick={()=>setSelimg(productThumbnail1)} />
+                    </div>
+                    <div className="indimage">
+                        <img src={productThumbnail2} onClick={()=>setSelimg(productThumbnail2)} />
+                    </div>
+                    {/* <div className="indimage">
+                        <img src={img4} onClick={()=>setSelimg(img4)} />
+                    </div> */}
+                </div>
+                <div className="mainimage">
+                    <div className="mainimg">
+                        {/* <img src={selimg} /> */}
+                        <InnerImageZoom zoomScale={1.6} src={selimg} zoomSrc={selimg} />
+                    </div>
+                </div>
+                <div className="productdesc">
+                    <div className="sticky">
+                        
+                    <div className="firstsection">
+                        <div className="designername">
+                            <div className="desname">
+                                {brandName}
+                            </div>
+                            <div className="wishlistsymbol" onClick={()=>handleAddToWishlist(product)}>
+                                {/* <BookmarkBorderIcon /> */}
+                                <BookmarkIcon />
+                            </div>
+                        </div>   
+                        <div className="productname">
+                            {productName}
+                        </div>
+                        <div className="productprice">
+                            <div className="actualprice">
+                                ₹ {productPrice}
+                            </div>
+                            <div className="discountprice">
+                                ₹ {discountproductPrice}
+                            </div>
+                        </div>
+                        <div className="line">
+                        
+                        </div>
+                        <div className="tax">
+                            (MRP ₹ {productPrice} incl. of all taxes in India)
+                        </div>
+                    </div>
+
+                    <div className="secondsection">
+                        <div className="selectsize">
+                            Select Size (Size Guide)
+                        </div>
+                        <div className="sizes">
+                            <div class="List__numbers">
+                            <div class="Property__Field">
+                            <input id="ShirtSize__36" type="radio" name="properties[_Shirt Size?]" value="xs" onClick={(e)=>{setSelectedproductSize(e.target.value)}}  />
+                            <label for="ShirtSize__36">XS</label>
+                            </div>
+                            <div class="Property__Field">
+                            <input id="ShirtSize__38" type="radio" name="properties[_Shirt Size?]" value="s" class="activeradio" onClick={(e)=>{setSelectedproductSize(e.target.value)}}  />
+                            <label for="ShirtSize__38">S</label>
+                            </div>
+                            <div class="Property__Field">
+                            <input id="ShirtSize__40" type="radio" name="properties[_Shirt Size?]" value="m" onClick={(e)=>{setSelectedproductSize(e.target.value)}} />
+                            <label for="ShirtSize__40">M</label>
+                            </div>
+                            <div class="Property__Field">
+                            <input id="ShirtSize__42" type="radio" name="properties[_Shirt Size?]" value="l" onClick={(e)=>{setSelectedproductSize(e.target.value)}} />
+                            <label for="ShirtSize__42">L</label>
+                            </div>
+                            <div class="Property__Field">
+                            <input id="ShirtSize__44" type="radio" name="properties[_Shirt Size?]" value="xl" onClick={(e)=>{setSelectedproductSize(e.target.value)}} />
+                            <label for="ShirtSize__44">XL</label>
+                            </div>
+                            <div class="Property__Field hide">
+                            <input id="ShirtSize__46" type="radio" name="properties[_Shirt Size?]" value="xxl" onClick={(e)=>{setSelectedproductSize(e.target.value)}} />
+                            <label for="ShirtSize__46">XXL</label>
+                            </div>
+                            <div class="Property__Field hide">
+                            <input id="ShirtSize__48" type="radio" name="properties[_Shirt Size?]" value="xxxl" onClick={(e)=>{setSelectedproductSize(e.target.value)}}  />
+                            <label for="ShirtSize__48">XXL</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div>{error}</div>
+                    <div className="thirdsection">
+                        {/* <div className="coupons">
+                            <div className="only">
+                                You pay Only: <span>$350</span>
+                            </div>
+                            <div className="save">
+                                Save: $174
+                            </div>
+                        </div> */}
+                        <div className="applycoupon">
+                            Apply the coupon during checkout
+                        </div>
+                        <div className="orderabove">
+                            Orders above Rs.1799. T&C apply.
+                        </div>
+                        <div className="couponcode">
+                            Coupon Code: <span>WONDERLAND15</span>
+                        </div>
+                    </div>
+                    <div className="fourthsection">
+                        <div className="buttons">
+                            <div className="addtobagbutton">
+                                <Button className="btn" onClick={() => handleAddToCart(product)}>
+                                    ADD TO BAG
+                                </Button>
+                            </div>
+                            <div className="customize">
+                                <Button className="btns" onClick={() => toggleModal()}>
+                                    CUSTOMIZE
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div className={productCategory==="mens" ? 'mencustom' : 'mencustomdeactive'}>
                     <Modal {...configModal}>
@@ -405,7 +553,7 @@ function ProductCard() {
                                                     handleChange={e => setEmail(e.target.value)}
                                                 />
                                                 <FormInput className="customiseinfoform"
-                                                    label="Height"
+                                                    label="Heighta"
                                                     type="text"
                                                     value={height}
                                                     handleChange={e => setHeight(e.target.value)}
@@ -685,7 +833,7 @@ function ProductCard() {
                                     </div>
                                 </div>
 
-                                <Button type="submit">
+                                <Button type="submit" className="btns">
                                     Submit
                                 </Button>
 
@@ -994,6 +1142,7 @@ function ProductCard() {
                                                 type="number"
                                                 min="0.00"
                                                 max="10000.00"
+                                                    max="10000.00"
                                                 step="0.01"
                                                 value={ankle}
                                                 handleChange={e => setAnkle(e.target.value)}
@@ -1084,7 +1233,7 @@ function ProductCard() {
                                                 min="0.00"
                                                 max="10000.00"
                                                 step="0.01"
-                                                value={message}
+                                                value={message} 
                                                 handleChange={e => setMessage(e.target.value)}
                                             />
                                     </div>
@@ -1100,105 +1249,125 @@ function ProductCard() {
                               
                         </Modal> 
                         </div> 
-                    </li>
 
 
 
-                    <li>
-                        <div className="addToCartprocard">
-                            <Button className ="procardButton"{...configAddToCartBtn} onClick = {()=>handleAddToCart(add)} >
-                                Add to cart
-                            </Button>
+
+
+                    <div className="fifthsection">
+                        <div className="desctitle">
+                            Product details
                         </div>
-                    </li>
-
-                    <li>
-                        {/* <div className="addToCartprocard">
-                            <Button className ="procardButton1" {...configAddToCartBtn} onClick = {()=>handleAddToCart(product)} >
-                                Add to Wishlist
-                            </Button>
-                        </div> */}
-                    </li>
-                    <br />
-                   
-                    <li>
-                    <div className={classes.root}>
-                            {/* <Accordion className="accordian">
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                    >
-                                    <Typography className="classHeading">Description</Typography>
-                                </AccordionSummary>
-
-                                <AccordionDetails>
-                                    <Typography>
-                                        <span
-                                                    className="desc"
-                                                    dangerouslySetInnerHTML={{ __html: productDesc }} />
-                                    </Typography>
-                                </AccordionDetails>
-                                </Accordion> */}
+                        <div className="desccontent" dangerouslySetInnerHTML={{ __html: productDesc }}>
+                            {/* Sea-green pre-draped chiffon-organza saree with ruffle border. Comes with floral embroidered blouse enhanced with cutwork border.<br />
+                            <br />
+                                    . Component: 2<br />
+                                    . Embroidered<br />
+                                    . Neckline: U Neck<br />
+                                    . Sleeve Length: Sleeveless<br />
+                                    . Fabric: Blouse: Net; Saree: Chiffon, Organza<br />
+                                    . Color: Green<br />
+                                    . Pre-draped<br />
+                                    . Ruffle saree<br />
+                                    . Deep back<br />
+                                    . Scallop cutwork<br /> */}
+                            
+                        </div>
+                    </div>
+                    <div className="sixthsection">
+                        <div className="accordians">
+                            <div className={classes.root}> 
                             <Accordion className="accordian">
-                            <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                            >
-                            <Typography className="classHeading">Size & Fit</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            <Typography>
-                                    .Fits true to size, however those who are between sizes should take the larger size
-                                    .Designed for a slightly loose fit
-                                    .Mid-weight, slightly stretchy fabric
-                                    .Model is 177cm/ 5'10" and is wearing a UK 8
-                            </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                        <Accordion className="accordian">
-                            <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                            >
-                            <Typography className="classHeading">Details & Care  </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            <Typography>
-                                    .Fits true to size, however those who are between sizes should take the larger size
-                                    .Designed for a slightly loose fit
-                                    .Mid-weight, slightly stretchy fabric
-                                    .Model is 177cm/ 5'10" and is wearing a UK 8
-                            </Typography>
-                            </AccordionDetails>
-                        </Accordion>
+                                <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel2a-content"
+                                id="panel2a-header"
+                                >
+                                <Typography className="classHeading">Size & Fit</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                <Typography>
+                                        Fits true to size, however those who are between sizes should take the larger size
+                                        Designed for a slightly loose fit
+                                        Mid-weight, slightly stretchy fabric
+                                        Model is 177cm/ 5'10" and is wearing a UK 8
+                                </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion className="accordian">
+                                <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel2a-content"
+                                id="panel2a-header"
+                                >
+                                <Typography className="classHeading">Details & Care  </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                <Typography>
+                                        .Fits true to size, however those who are between sizes should take the larger size
+                                        .Designed for a slightly loose fit
+                                        .Mid-weight, slightly stretchy fabric
+                                        .Model is 177cm/ 5'10" and is wearing a UK 8
+                                </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                            </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                    </div>
+                </div>
             </div>
             
-            <div className="slider">
-                    <div className="simliar">
-                        You may also like
-                    </div>
-                    <Slider  {...settings}>
-                         <Simslider {...product} /> 
-                         <Simslider {...product} /> 
-                         <Simslider {...product} /> 
-                         <Simslider {...product} /> 
-                         <Simslider {...product} /> 
-                         <Simslider {...product} /> 
-                    </Slider>
-            </div>
+            {/* <div className="customerreviews">
+                <div className="customerreviewstitle">
+                 Customer Reviews ({reviews.length})
+                </div>
+                <div className="line">
 
-            <div className="footer">
-                <Footer />
-            </div>
-           
-        </div>
+                </div>
+                <div className="reviews">
+                {reviews.map((review,pos)=>{
+                    return(
+                        <Reviews key={pos} {...review} />
+                    )
+                })}
+                </div>
+                
+            </div> */}
+                    
+                        <div className="slider">
+                            <div className="simliar">
+                                You may also like
+                            </div>
+                            <div className="loongline">
+                                    
+                            </div>
+                            <Slider  {...settings}>
+                                <Simslider {...similiar1} /> 
+                                <Simslider1 {...similiar2} />
+                                <Simslider2 {...similiar3} />
+                                <Simslider3 {...similiar4} />
+                                <Simslider1 {...similiar2} />
+                                
+
+                            </Slider>
+                        </div>
+
+                        <div
+                            className={popcart? "popupcart" :"popupcart-hide"}>
+                            <motion.div 
+                             initial={{y:40, opacity:0}}
+                             animate={{y:0, opacity:1}}
+                             transition={{ ease: "easeOut", duration: 0.4}}
+                             className="popupcartbg">
+                                    Product added to cart <LabelImportantIcon />
+                            </motion.div>
+                        </div>
+                        <Footer />  
+                    
+                
+                </div>
+        
     )
 }
 

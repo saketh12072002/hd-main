@@ -53,7 +53,7 @@ hr{
         // width: 70rem; */
         /* margin-left: 10rem; */
         position: absolute;
-        top: 5rem;
+        top: 10rem;
         flex-direction: column;
         background:var(--white);
         /* background-color: #e5e5f7; */
@@ -70,6 +70,7 @@ hr{
         opacity: 97%;
         padding-bottom: 4rem;
         margin-top: 2rem;
+        /* margin-bottom: 10rem; */
     }
 
     hr {

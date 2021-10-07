@@ -1,0 +1,109 @@
+.wishitemcard{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // background-color: #e7e7e7;
+    .wishheader{
+        font-size: 2rem;
+        font-weight: 600;
+        margin-left: 9rem;
+        margin-bottom: 3rem;
+        margin-top: 4rem;
+        span{
+            font-weight: 300;
+        }
+    }
+    .wishitemcardlayout{
+        width: 24rem;
+        border: 1px solid rgb(214, 214, 214);
+        margin: 0rem 10rem 10rem 10rem;
+        
+        .wishclose{
+            position: absolute;
+            // right: 0;
+            .MuiSvgIcon-root{
+                font-size: 2.4rem;
+                margin-left: 0.7rem;
+                margin-top: 0.7rem;
+                cursor: pointer;
+                color: rgb(56, 56, 56);
+            }
+        }
+        .wishitemimg{
+
+            img{
+               width: 100%;
+            }            
+        }
+        .wishcontent{
+            width: 100%;
+            // background-color: blanchedalmond;
+            margin-bottom: 1rem;
+            .wishname{
+                font-size: 1.1rem;
+                margin-left: 1rem;
+                margin-top: 1rem;
+            }
+
+            .wishprices{
+                display: flex;
+                flex-direction: row;
+                margin-top: 1rem;
+                margin-left: 1rem;
+                align-items: center;
+                .wishpri{
+
+                    font-size: 1.6rem;
+                    margin-right: 0.7rem;
+                }
+                .wishdis{
+                    font-size: 1.1rem;
+                    text-decoration: line-through;
+                    margin-right: 0.7rem;
+                    color: rgb(119, 119, 119);
+                }
+                .wishper{
+                    font-size: 1.2rem;
+                    color: var(--gold);
+                   
+                }
+            }
+
+            
+        }
+        .wishbtn{
+                display: block;
+                font-size: 1.4rem;
+                line-height: 1;
+                font-weight: 300;
+                text-transform: uppercase;
+                font-family: 'Ropa Sans', sans-serif;
+                margin: 0 auto;
+                outline: none;
+                cursor: pointer;
+                background-color:var(--gold);
+                color: var(--white);
+                // border: 1px solid var(--blue);
+                border: none;
+                width: 100%;
+                letter-spacing: 2px;
+                padding: 1rem;
+                transition: 0.3s ease-out;
+            
+                &:hover{
+                font-weight: 800 ;
+                
+                }
+            
+        }
+    }
+}
+@media only screen and (max-width: 480px){
+    .wishitemcard{
+        .wishitemcardlayout{
+            width: 100%;
+            margin: 0;
+        }
+    }
+}

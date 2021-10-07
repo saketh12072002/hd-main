@@ -1,0 +1,357 @@
+.paymentdetails{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // padding: 3rem;
+  margin-bottom: 8rem;
+
+  .paymentform{
+    border: 1px rgb(231, 231, 231) solid;
+      border-radius: 8px;
+      padding: 2rem;
+
+
+      .group{
+        .adressinputtitle{
+          font-size: 1.5rem;
+            font-weight: 400;
+            color: rgb(53, 53, 53);
+            margin-top: 2rem;
+            // display: none;
+        }
+        .namecardinput{
+
+          width: 108%;
+          
+        
+        }
+        .cardelement{
+          width: 93%;
+          margin-left: 0.3rem;
+          margin-top: 1rem;
+        }
+      }
+  }
+
+
+  .paymentbtn{
+    display: block;
+  width: 10%;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: 'Ropa Sans', sans-serif;
+  margin: 0 auto;
+  outline: none;
+  cursor: pointer;
+  background-color:var(--black);
+  color: var(--white);
+  border: 1px solid var(--blue);
+  width: 26rem;
+  letter-spacing: 2px;
+  padding: 1.6rem;
+  transition: 0.3s ease-out;
+  margin-top: 3rem;
+
+  &:hover{
+    font-weight: 800 ;
+    
+  }
+  }
+
+  h2{
+    font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 500;
+  }
+
+  .checkoutform{
+    padding: 3rem;
+ 
+    width: 60%;
+    height: 100%;
+
+    .shippingtitle{
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+    .shipping{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px rgb(231, 231, 231) solid;
+      border-radius: 8px;
+      padding:2rem;
+      margin-bottom: 4rem;
+  
+      .shippingdata{
+          width: 100%;
+        .thirdline{
+          // width: 10;
+          .adressinputtitle{
+            
+            font-size: 1.3rem;
+              font-weight: 400;
+              color: rgb(53, 53, 53);
+          }
+          .thirdlinelength{
+            width: 90%;
+            .thirdlineinput{
+              width: 90%;
+            }
+          }
+        }
+          .firstline{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .adressinputtitle{
+              font-size: 1.3rem;
+              font-weight: 400;
+              color: rgb(53, 53, 53);
+            }
+          }
+
+          .first{
+            width: 100%;
+          }
+          .second{
+            width: 100%;
+          }
+      }
+    }
+  }
+
+  
+  .cartdata{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(233, 233, 233);
+    padding:5rem;   
+    align-items: center;
+    height: 100%;
+    // margin-top: 3rem;
+
+    .couponapp{
+      display: flex;
+      justify-content:flex-start;
+      width: 100%;
+      color: green;
+      font-size: 1.2rem;
+      text-transform: lowercase;
+      text-align: left;
+      align-items: center;
+      transition: opacity 200ms ease-in;
+      letter-spacing: 3px;
+      opacity: 0;
+      right: 10px;
+      // margin-right: 1rem;
+    }
+    .couponapplied{
+      display: flex;
+      justify-content:flex-start;
+      width: 100%;
+      color: green;
+      font-size: 1.2rem;
+      text-transform: lowercase;
+      text-align: left;
+      align-items: center;
+      transition: 200ms ease-in;
+      letter-spacing: 3px;
+      margin-right: 0;
+      
+    }
+    .invalidcouponapp{
+      display: flex;
+      justify-content:flex-start;
+      width: 100%;
+      color: rgb(128, 0, 0);
+      font-size: 1.2rem;
+      text-transform: lowercase;
+      text-align: left;
+      align-items: center;
+      transition: opacity 200ms ease-in;
+      letter-spacing: 3px;
+      opacity: 0;
+      right: 10px;
+      // margin-right: 1rem;
+    }
+    .invalidcouponapplied{
+      display: flex;
+      justify-content:flex-start;
+      width: 100%;
+      color: rgb(255, 0, 0);
+      font-size: 1.2rem;
+      text-transform: lowercase;
+      text-align: left;
+      align-items: center;
+      transition: 200ms ease-in;
+      letter-spacing: 3px;
+      margin-right: 0;
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+      
+    }
+    @keyframes shake {
+      10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+   
+    .line{
+      width: 100%;
+      height: 1px;
+      background-color: rgb(175, 175, 175);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .cartitemdata{
+      width: 100%;
+      // background-color: black;
+      
+    }
+
+    .cartcoupon{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .couponform{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .couponinput{
+          width:100%;
+         input{
+           padding: 1.7rem;
+           margin-top: 0;
+         }
+        }
+        .couponsection{
+          .couponbtn{
+            display: block;
+            width: 10%;
+            font-size: 1.4rem;
+            line-height: 1;
+            font-weight: 300;
+            text-transform: uppercase;
+            font-family: 'Ropa Sans', sans-serif;
+            margin: 0 auto;
+            outline: none;
+            cursor: pointer;
+            background-color:var(--black);
+            color: var(--white);
+            border: 1px solid var(--blue);
+            width: 12rem;
+            letter-spacing: 2px;
+            padding: 1.54rem;
+            transition: 0.3s ease-out;
+            // margin-top: 3rem;
+  
+            &:hover{
+              font-weight: 800 ;
+              
+            }
+          }
+        }
+      }
+      
+    }
+    .cartordersummary{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+   
+      .savedsubtotal{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1.4rem;
+        margin-bottom: 0.7rem;
+        .savedline{
+          text-decoration: line-through;
+        }
+      }
+      .subtotal {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          font-size: 1.4rem;
+          margin-bottom: 0.7rem;
+      }
+      .shipping{
+        font-size: 1.4rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .paymenttotal{
+      width: 100%;
+      display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .savedmoney{
+            display: none;
+          }
+          .savedmoneyactive{
+            display: flex;
+            justify-content:flex-end;
+            width: 60%;
+            color: green;
+            font-size: 1.2rem;
+            text-transform: lowercase;
+            text-align: right;
+            align-items: center;
+            transition: 1s ease-in-out;
+            letter-spacing: 3px;
+  
+          }
+    }
+  }
+}
+@media only screen and (max-width: 480px){
+  .paymentdetails{
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 10rem;
+
+    .checkoutform{
+      width: 100%;
+      padding: 0;
+      .shipping{
+        padding-right: 0;
+      }
+    }
+
+    .cartdata{
+      width: 100%;
+      margin-bottom: 5rem;
+    }
+  }
+}

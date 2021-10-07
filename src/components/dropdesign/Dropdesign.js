@@ -8,8 +8,6 @@ import SendIcon from '@material-ui/icons/Send';
 function Dropdesign() {
     return (
         <div className="droppcontainter">
-           
-
             
             <div className="droppimage">
                 <img src={contact} />
