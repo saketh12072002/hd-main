@@ -51,6 +51,8 @@ import ReactGa from 'react-ga';
 import Payment from './pages/Payment/Payment';
 import Designerdetails from './pages/Designerdetails/Designerdetails';
 import DesignersData from './pages/DesignersData/DesignersData';
+import Orderstatus from './pages/orderstatus/Orderstatus';
+import Orderplaced from './pages/orderplaced/Orderplaced';
 
 
 const App = (props) => {
@@ -99,6 +101,24 @@ const App = (props) => {
           
           <MainLayout >
           <Blog />
+        </MainLayout>
+         
+          
+      )} />
+      <Route exact path="/orderplaced" render={() =>(
+          
+          <MainLayout >
+          <Orderplaced />
+        </MainLayout>
+         
+          
+      )} />
+
+
+<Route exact path="/orderstatus" render={() =>(
+          
+          <MainLayout >
+          <Orderstatus />
         </MainLayout>
          
           
