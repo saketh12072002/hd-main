@@ -13,12 +13,13 @@ function Dropdesign() {
                 <img src={contact} />
                 </div>
             
-            <form className='droppform'>
+            
                 <div className="dropback">
-                    <div className="category">
+                <form className='droppform'>
+                <div className="category">
 
                     <div className="droppheader">
-                        <span className="droplike">Like some design?</span><br /> Share it with us and we will make it for you
+                        <span className="droplike">Like some design?</span><br /><br /> Share it with us and we will make it for you
                         <hr />
                         
                     </div>
@@ -26,7 +27,7 @@ function Dropdesign() {
                         <div className="chooseheader">
                             Choose category
                         </div>
-                        <div className="catebuttons">
+                        <div className="d-flex flex-wrap">
                             <input type="radio" id="suits" name="suits" value="male" />
                             <label class="custom-radio" for="suits">Suits</label><br/>
                             <input type="radio" id="sherwani" name="sherwani" value="male"  />
@@ -35,9 +36,7 @@ function Dropdesign() {
                             <label custom-radio for="Indo western">IndoWestern</label><br/>
                             <input type="radio" id="bandi" name="bandi" value="male"  />
                             <label custom-radio for="bandi">Bandi</label><br/>
-                            </div>
 
-                            <div className="catebuttons">
                             <input type="radio" id="Kurta" name="kurta" value="male" />
                             <label custom-radio for="Kurta">Kurta</label><br/>
                             <input type="radio" id="Shirts" name="shirts" value="male"  />
@@ -54,7 +53,7 @@ function Dropdesign() {
                         <div className="chooseheader">
                                 Your Budget
                         </div>
-                        <div className="catebutton">
+                        <div className="flex-wrap">
                                 <input type="radio" id="1000" name="gtten" value="gtten" />
                                 <label class="custom-radio" for="1000">10000+</label><br/>
                                 <input type="radio" id="2000" name="gttwenty" value="gttwenty"  />
@@ -129,10 +128,8 @@ function Dropdesign() {
             />
         
           </div>
+          </form>
                 </div>
-           
-            
-            </form>
             
         </div>
     )
