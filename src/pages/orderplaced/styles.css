@@ -1,0 +1,68 @@
+*{
+      font-size: 12px;
+  }
+  
+  
+  .container{
+       
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+        padding: 2%;
+        flex-direction: row;
+        text-align: center;      
+  }
+  
+.flex-column{
+    background-color:#ffe77aff;
+    width: 80vw;
+    padding: 4vw 3vw;
+}
+  
+  
+  p.sed{
+      padding-top: 1%;
+      text-align: center;
+      font-size:3vw;
+  }
+  
+  p.matt{
+      padding-top: 1%;
+      text-align: center;
+      font-size:1.5vw;
+  }
+  
+  b {
+          font-size: 14px;
+  }
+  
+  
+  button{
+      float: right;
+      margin-right: 20px;
+      background-color:crimson;
+      color: floralwhite;
+      border: none;
+      padding: 0vw 2.5vw;
+  }
+  
+  button:hover{
+      background-color:indianred;
+      color: ghostwhite;
+      cursor: pointer;
+  }
+  
+  .button{
+      padding-top: 40px;
+      padding-bottom: 40px;
+  }
+  p.trans{
+      float: left;
+      padding-top: 20px;
+  }
+  
+  a.link{
+      text-decoration:none;
+      font-size: 12px;
+      color:brown;
+  }
