@@ -24,7 +24,18 @@ const columns = [
 const styles = {
   fontSize: '16px',
   cursor: 'pointer',
-  width: '10%'
+  width: '10%',
+  textAlign:'center'
+};
+
+
+
+const styls = {
+  fontSize: '16px',
+  width: '100%',
+  height: '100%',
+  paddingBottom: '2vw',
+  backgroundColor: '#f3a8ba'
 };
 
 const formatText = (columnName, columnValue) => {
@@ -42,8 +53,10 @@ const OrderHistory = ({ orders }) => {
   const history = useHistory();
 
   return (
-    <TableContainer>
-      <Table>
+    <TableContainer
+    style={styls}
+    >
+      <Table Responsive>
 
         <TableHead>
           <TableRow>
