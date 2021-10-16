@@ -1,8 +1,6 @@
 import React from 'react';
 import './styles.css';
-import checkbox from './check.png';
-
-
+import check from './check.gif';
 
 
 function Orderplaced() {
@@ -10,7 +8,7 @@ function Orderplaced() {
     <div className="container">
 <div className="d-flex flex-column">
   <div className="imge">
-     <img src={ checkbox } alt="Logo" />
+     <img src={ check }  />
   </div>
   <div className="p-2">
     <p className="sed">Order Placed</p>
