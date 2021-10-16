@@ -132,10 +132,12 @@ a, a:hover {
     height: 100%;
     z-index: 1;
     border-right: 1px solid #d3d3d3;
+    background-color: #d6fcfd;
   }
 
   .content {
     padding: 0 10px;
+    padding-bottom: 20px;
   }
 }
 
