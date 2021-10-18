@@ -16,8 +16,8 @@ function DashboardLayout(props) {
     return (
         <div className="dashboardLayout">
             <Header {...props}/>
-            <div className="controlPanel">
-                <div className="sidebar">
+            <div className="controlPaneldash">
+                <div className="sidebardash">
                     <VerticalNav>
                         <ul>
                             <li>
@@ -33,11 +33,11 @@ function DashboardLayout(props) {
                         </ul>
                     </VerticalNav>
                 </div>
-                <div className="content">
+                <div className="contentdash">
                     {props.children}
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     )
 }
