@@ -117,7 +117,7 @@ a, a:hover {
   margin: 0 ;
 }
 
-.controlPanel {
+.controlPaneldash {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -125,7 +125,7 @@ a, a:hover {
   padding: 3rem 0 6rem 25.0rem;
   border-bottom: 1px solid #d3d3d3;
 
-  .sidebar {
+  .sidebardash {
     position: absolute;
     top: 0; left: 0;
     width: 25.0rem;
@@ -135,7 +135,7 @@ a, a:hover {
     background-color: #d6fcfd;
   }
 
-  .content {
+  .contentdash {
     padding: 0 10px;
     padding-bottom: 20px;
   }
