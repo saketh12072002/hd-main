@@ -19,7 +19,7 @@ function Orderplaced() {
     <h4>Order Details :</h4>
     <p><b>Order ID: xxxx-xxxx-xxxx-xxxx</b></p>
     <a class="link" href="src\pages\ProductDetails\ProductDetails.js">Go to your order</a></div>
-    <div className="button">
+    <div className="buttonop">
       <p className="trans">*This is a Secure Transaction</p>
       <button onClick="#"><h5>Continue Shopping</h5></button>
     </div>
