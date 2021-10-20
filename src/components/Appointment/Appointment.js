@@ -4,8 +4,12 @@ import Button from './../forms/Button/Button'
 import emailjs from 'emailjs-com';
 import Footer from '../Footer/Footer';
 import { useHistory } from 'react-router-dom';
+import Popup from '../Popup';
+import { useState } from "react";
+import ReactDOM from "react-dom";
 
 function Appointment() {
+
     const history = useHistory();
     function sendEmail(e) {
         e.preventDefault();
@@ -17,10 +21,11 @@ function Appointment() {
               console.log(error.text);
           });
           e.target.reset()
-        //   history.push('/djabkassjd');  
+        // history.push('/djabkassjd');  
       }
-        
 
+      const [buttonPopup, setButtonPopup] = useState(false);
+      const handleShow= () => setButtonPopup(true);
       
 
     return (
@@ -35,7 +40,7 @@ function Appointment() {
             </div>
             
             <div className="Enterdetails">
-            <form  onSubmit = {sendEmail} className='form' >
+            <form onSubmit = {sendEmail}  className='form' >
                 <h1 >
                     {/* Enter your details */}
                 </h1>
@@ -47,6 +52,7 @@ function Appointment() {
                     name='firsname'
                     placeholder='First Name'
                     required="required"
+                    
                 />
                 </div>
                 <div className='form-inputs'>
@@ -56,8 +62,8 @@ function Appointment() {
                     type='text'
                     name='secondname'
                     placeholder='Last Name'
-                    required="required"
-                />
+                    
+                    />
                 </div>
 
                 
@@ -82,6 +88,7 @@ function Appointment() {
               name='phone'
               placeholder='Phone'
               required="required"
+              
             />
           
           </div>
@@ -103,13 +110,22 @@ function Appointment() {
             <textarea name="message" rows="10" cols="30">
              Leave a message for us
           </textarea>
-          
           </div>
-          <Button className='form-input-btn' type='submit'>
+          <div>
+          
+          <Button className='form-input-btn' type='submit' onClick={handleShow}>
             BOOK AN APPOINTMENT
           </Button>
+          </div>  
             </form>
+
+          
         </div>
+        
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+            <h3>Your Appointment is Booked</h3>
+            <p>You will be contacted Shortly</p>
+            </Popup>
         <br />
         <br />
         <br />
