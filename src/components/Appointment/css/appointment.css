@@ -22,9 +22,9 @@
     margin-top: 10rem;
   }
 
-  .footer{
-    /* margin-top: 90rem; */
-  }
+  /* .footer{
+     margin-top: 90rem; 
+  } */
 
   .headingapp {
     width: 50%;
@@ -83,11 +83,15 @@
     margin-top: 80px;
     color: rgb(54, 54, 54);
   }
+  .close-btn {
+    position: fixed;
+    float: right;
+    margin-top: 100px;
+}
   
  
   
   .form {
-    height: 100%;
     margin-top: 28rem;
  
     position: absolute;
@@ -201,7 +205,7 @@
   
   .form-input-btn {
     display: block;
-    width: 30%;
+    width: 100%;
     margin-top: 2rem;
     font-size: 1.4rem;
     line-height: 1;
@@ -241,4 +245,8 @@
     text-decoration: none;
     color: #27cdff;
     font-weight: 600;
+  }
+
+  h3{
+    padding-bottom: 0.5vw;
   }
