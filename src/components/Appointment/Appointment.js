@@ -9,11 +9,13 @@ import { useState } from "react";
 import ReactDOM from "react-dom";
 
 function Appointment() {
-
+    const [buttonPopup, setButtonPopup] = useState(false);
+    function handleShow() {
+        setButtonPopup(true);
+    }
     const history = useHistory();
     function sendEmail(e) {
         e.preventDefault();
-    
         emailjs.sendForm('service_f3vayds', 'template_oysmbvj', e.target, 'user_uh9FZHGEceRQL50NMAOUV')
           .then((result) => {
               console.log(result.text);
@@ -24,8 +26,7 @@ function Appointment() {
         // history.push('/djabkassjd');  
       }
 
-      const [buttonPopup, setButtonPopup] = useState(false);
-      const handleShow= () => setButtonPopup(true);
+      
       
 
     return (
@@ -88,7 +89,6 @@ function Appointment() {
               name='phone'
               placeholder='Phone'
               required="required"
-              
             />
           
           </div>
@@ -104,16 +104,31 @@ function Appointment() {
             </select>
           
           </div>
+
+          <div className='form-inputs'>
+            <label className='form-label'>BRAND</label>
+            <br />
+            <select name="option">
+                <option value="0">Brand</option>
+                <option value="1">The Haberdasher CO</option>
+                <option value="2">Garvili</option>
+                <option value="3">Kavana</option>
+                <option value="4">Anjima Boro</option>
+                <option value="5">Rahi Label</option>
+                <option value="6">Oodeypore</option>
+            </select>
+          
+          </div>
           
           <div className='form-inputs'>
             {/* <label className='form-label'>LEAVE A MESSAGE</label> */}
-            <textarea name="message" rows="10" cols="30">
-             Leave a message for us
+            <textarea name="message" rows="8" cols="30" placeholder=" Leave a message for us">
+             
           </textarea>
           </div>
           <div>
           
-          <Button className='form-input-btn' type='submit' onClick={handleShow}>
+          <Button onClick={handleShow} className='form-input-btn' type='submit' >
             BOOK AN APPOINTMENT
           </Button>
           </div>  
