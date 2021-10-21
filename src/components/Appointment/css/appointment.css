@@ -97,7 +97,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -45%);
     width: 90%;
     height: 100%;
     display: flex;
@@ -112,14 +112,12 @@
   }
   
   .form h1 {
-    font-size: 2rem;
     /* text-align: center; */
     width: 30%;
-    margin-bottom: 4rem;
-    color: #fff;
-    background:black ;
+    margin-bottom: 2rem;
     text-align: center;
-    margin-top: -3rem;
+    margin-top: -5rem;
+    border-bottom: 5px solid black;
     /* height: 40rem; */
 
   }
