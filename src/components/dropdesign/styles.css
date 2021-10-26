@@ -110,7 +110,7 @@ hr{
         padding-top: 2.5vw;
         padding-left: 2vw;
         padding-right: 2vw;
-        opacity: 97%;
+        opacity: 0.97;
         padding-bottom: 4rem;
         margin-top: 3rem; 
 
@@ -132,7 +132,7 @@ hr{
         background: black;
         height: 0.3px;
         margin: 0;
-        opacity: 240%;
+        opacity: 1;
         display: none;
     }
 
@@ -143,6 +143,12 @@ hr{
             margin-top: 2rem;
             margin-bottom: 2rem;
             padding-right: 2rem;
+    }
+    .confirmNote{
+        position: absolute;
+        top:10rem;
+        left:0rem;
+        /* background-color: black; */
     }
     .MuiSvgIcon-root{
         margin-left: 0.1rem;
@@ -163,7 +169,7 @@ hr{
         margin-top: 90px;
         top: -6rem;
         object-fit:fill;
-        min-height: 100rem;
+        min-height: 110rem;
         z-index: 0;
         /* display: none; */
     }

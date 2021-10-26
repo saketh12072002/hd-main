@@ -1,0 +1,15 @@
+.dropConfirm_container{
+    width: 60rem;
+    height: 20rem;
+    background-color: rgb(27, 27, 27);
+    border: rgb(255, 255, 255) solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // opacity: 0.9;
+     .dropConfirm_message{
+        font-size: 2rem;
+        font-weight: 600;
+        color: rgb(255, 255, 255);
+     }
+}
