@@ -42,6 +42,7 @@ function Newarrivals(product) {
                 </Link>
             </div>
             
+            
             <div className="detailss">
                 <ul>
                     <li className="name">
